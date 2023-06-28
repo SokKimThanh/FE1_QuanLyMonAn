@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="public/css/custom/validator.css">
+    <link rel="stylesheet" href="public/css/thuvien/all.css">
+</head>
+
+<body>
+    <h2>JavaScript Validation</h2>
+
+    <form name="myForm" onsubmit="return validateForm()" method="post" action="http://20.92.229.217">
+        <!-- Nhập mã số sinh viên -->
+        <div>
+            <p>Nhập mã số sinh viên</p>
+            <input type="text" id="fstudentid">
+            <p class="message invalid"></p>
+            <p class="message ok">Nhập đúng!</p>
+        </div>
+        <div>
+            <p>Nhập Tên:</p>
+            <input type="text" id="fname">
+            <p class="message invalid"></p>
+            <p class="message ok">Nhập đúng!</p>
+        </div>
+
+        <div>
+            <p>Nhập tuổi từ 18 đến 35:</p>
+            <input type="number" id="fage">
+            <p>Nhập tuổi từ 18 đến 35:</p>
+            <input type="number" id="fage">
+        </div>
+
+        <div>
+            <p>Nhập số điện thoại (việt nam)</p>
+            <input type="tel" id="fphonenumber">
+            <div>
+                <p class="message invalid"></p>
+                <p class="message ok">Nhập đúng!</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>Nhập Email</p>
+                <input type="email" id="femail">
+            </div>
+            <div>
+                <p class="message invalid"></p>
+                <p class="message ok">Nhập đúng!</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>Nhập UserName</p>
+                <input type="text" id="fusername">
+            </div>
+            <div>
+                <p class="message invalid"></p>
+                <p class="message ok">Nhập đúng!</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>Nhập Password</p>
+                <input type="password" id="fpassword">
+                <span onclick="hienpassword()"><i class="fa fa-eye"></i></span>
+            </div>
+            <div>
+                <p class="message invalid"></p>
+                <p class="message ok">Nhập đúng!</p>
+            </div>
+        </div>
+        <button type="submit">Đăng ký tài khoản</button>
+    </form>
+    <script src="public/js/custom/no-bootstrap-validate-form.js"></script>
+    <script src="public/js/thuvien/bootstrap.min.js"></script>
+</body>
+
+</html>

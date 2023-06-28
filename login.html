@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="public/css/thuvien/all.css">
+  <link rel="stylesheet" href="public/css/thuvien/bootstrap.css">
+  <link rel="stylesheet" href="public/css/custom/navbar.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img class="img-responsive" src="./public/images/logo.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon open"></span>
+        </button>
+        <!-- <div class="collapse navbar-collapse bg-blue" id="collapsibleNavbar"> -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active-link">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Đăng ký</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Đăng nhập</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section>
+    <!-- phan body -->
+    <div class="container">
+      <div class="row m-auto">
+        <div class="col-12">
+          <h6>Đăng nhập</h5>
+            <form name="myForm" onsubmit="return validateForm()" method="post" action="http://20.92.229.217">
+              <div>
+                <div>
+                  <p>Nhập UserName</p>
+                  <input type="text" id="fusername">
+                </div>
+                <div>
+                  <p class="message invalid"></p>
+                  <p class="message ok">Nhập đúng!</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p>Nhập Password</p>
+                  <input type="password" id="fpassword">
+                  <span onclick="hienpassword()"><i class="fa fa-eye"></i></span>
+                </div>
+                <div>
+                  <p class="message invalid"></p>
+                  <p class="message ok">Nhập đúng!</p>
+                </div>
+              </div>
+              <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <footer class="navbar-light">
+    <!-- phan footer -->
+  </footer>
+
+  <script src="public/js/thuvien/bootstrap.js"></script>
+  <script src="public/js/custom/navbar.js"></script>
+  <script src="public/js/custom/no-bootstrap-validate-form.js"></script>
+</body>
+
+</html>

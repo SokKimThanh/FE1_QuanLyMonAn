@@ -1,0 +1,77 @@
+/*
+* Sok Kim Thanh
+* Date: 22/06/2023
+* validator.css;
+*/
+.message {
+    display: none;
+    font-size: 14pt;
+}
+
+.message.invalid {
+    color: red;
+}
+
+.message.ok {
+    color: green
+}
+
+.invalid-message {
+    border: red solid 1px;
+}
+
+.ok-message {
+    border: unset;
+}
+/* 
+.inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left {
+    grid-column: 1/span 2;
+    border: 1px dashed black;
+    padding: 4px;
+}
+
+.right {
+    grid-column: 3/span 2;
+    border: 1px dashed black;
+    padding: 4px;
+}
+
+.center {
+    grid-column: 2/span 2;
+    border: 1px dashed black;
+    padding: 4px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.btn0 {
+    height: 100%;
+    width: auto;
+}
+
+.self-align {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    width: 50%;
+    height: 30px;
+}
+
+.para {
+    width: 50%;
+    text-align: center;
+} */
