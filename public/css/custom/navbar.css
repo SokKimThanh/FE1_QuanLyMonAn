@@ -62,11 +62,13 @@ body {
     color: white;
 }
 
-.active-link,
-.nav-link:hover {
+
+.nav-link:hover,
+.nav-link:active,
+.active-link {
     color: #00f199;
 }
-
+ 
 
 
 /* Footer design here*/

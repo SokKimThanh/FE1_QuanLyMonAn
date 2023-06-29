@@ -40,7 +40,7 @@ function chuyenHinh() {
     /** 
      * figure 1. Out of bounds check
      * */
-    if (viTriChonHinhKeTiep == thumbnails.length) {
+    if (viTriChonHinhKeTiep == thumbnails.length - 1) {
         viTriChonHinhKeTiep = 0;//chuyển về vị trí ban đầu
     }
     /** 

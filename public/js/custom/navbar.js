@@ -1,3 +1,8 @@
+/**
+ * @author Sok Kim Thanh
+ * @Môtả Cài đặt navbar
+ * @date 29/06/2023
+ */
 //collapsibleNavbar
 let collapsibleNavbar = document.getElementById('collapsibleNavbar');
 //button click
@@ -35,3 +40,5 @@ buttonToggle.onclick = function () {
         childOfButtonToggle.classList.toggle('close');
     }
 }
+
+ 
