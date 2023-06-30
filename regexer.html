@@ -1,95 +1,93 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="public/css/validator.css" />
+    <link rel="stylesheet" href="public/css/all.css" />
+  </head>
 
-<head>
-    <link rel="stylesheet" href="public/css/validator.css">
-    <link rel="stylesheet" href="public/css/all.css">
-</head>
-
-<body>
+  <body>
     <h2>JavaScript Validation</h2>
 
     <form class="grid" name="myForm" onsubmit="return validateForm()" method="post" action="http://20.92.229.217">
-        <!-- Nhập mã số sinh viên -->
-        <div class="left">
-            <div class="inline">
-                <p class="para">Nhập mã số sinh viên</p>
-                <input class="input" type="text" id="fstudentid">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+      <!-- Nhập mã số sinh viên -->
+      <div class="left">
+        <div class="inline">
+          <p class="para">Nhập mã số sinh viên</p>
+          <input class="input" type="text" id="fstudentid" />
         </div>
-        <div class="right">
-            <div class="inline">
-                <p class="para">Nhập Tên:</p>
-                <input class="input" type="text" id="fname">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
         </div>
+      </div>
+      <div class="right">
+        <div class="inline">
+          <p class="para">Nhập Tên:</p>
+          <input class="input" type="text" id="fname" />
+        </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
+        </div>
+      </div>
 
-        <div class="left">
-            <div class="inline">
-                <p class="para">Nhập tuổi từ 18 đến 35:</p>
-                <input class="input" type="number" id="fage">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+      <div class="left">
+        <div class="inline">
+          <p class="para">Nhập tuổi từ 18 đến 35:</p>
+          <input class="input" type="number" id="fage" />
         </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
+        </div>
+      </div>
 
-        <div class="right">
-            <div class="inline">
-                <p class="para">Nhập số điện thoại (việt nam)</p>
-                <input class="input" type="tel" id="fphonenumber">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+      <div class="right">
+        <div class="inline">
+          <p class="para">Nhập số điện thoại (việt nam)</p>
+          <input class="input" type="tel" id="fphonenumber" />
         </div>
-        <div class="center">
-            <div class="inline">
-                <p class="para">Nhập Email</p>
-                <input class="input" type="email" id="femail">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
         </div>
-        <div class="center">
-            <div class="inline">
-                <p class="para">Nhập UserName</p>
-                <input class="input" type="text" id="fusername">
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+      </div>
+      <div class="center">
+        <div class="inline">
+          <p class="para">Nhập Email</p>
+          <input class="input" type="email" id="femail" />
         </div>
-        <div class="center">
-            <div class="inline">
-                <p class="para">Nhập Password</p>
-                <input class="input" type="password" id="fpassword">
-                <span onclick="hienpassword()"><i class="fa fa-eye"></i></span>
-            </div>
-            <div class="self-align">
-                <p class="message invalid"></p>
-                <p class="message ok">Nhập đúng!</p>
-            </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
         </div>
-        <div class="center self-align">
-            <button class="btn0 self-align" type="submit">Đăng ký tài khoản</button>
+      </div>
+      <div class="center">
+        <div class="inline">
+          <p class="para">Nhập UserName</p>
+          <input class="input" type="text" id="fusername" />
         </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
+        </div>
+      </div>
+      <div class="center">
+        <div class="inline">
+          <p class="para">Nhập Password</p>
+          <input class="input" type="password" id="fpassword" />
+          <span onclick="hienpassword()"><i class="fa fa-eye"></i></span>
+        </div>
+        <div class="self-align">
+          <p class="message invalid"></p>
+          <p class="message ok">Nhập đúng!</p>
+        </div>
+      </div>
+      <div class="center self-align">
+        <button class="btn0 self-align" type="submit">Đăng ký tài khoản</button>
+      </div>
     </form>
     <script src="public/js/no-bootstrap-validate-form.js"></script>
     <script src="public/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>

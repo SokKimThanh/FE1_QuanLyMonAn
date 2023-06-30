@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MyLinkedList = void 0;
 /**
- * Sok Kim Thanh
- * Date created: 28/06/2023
- * class MyLinkedList.js
- */
+* Sok Kim Thanh
+* Date created: 28/06/2023
+* class MyLinkedList.js
+*/
 var MyNode_1 = require("./MyNode");
 var MyLinkedList = /** @class */ (function () {
     // constructor
@@ -151,9 +151,29 @@ var MyLinkedList = /** @class */ (function () {
         return temp;
     };
     /**
+     *
+     * @param pre node phia truoc can xoa
+     * @returns
+     */
+    MyLinkedList.prototype.RemoveAfter = function (pre) {
+        var check = false;
+        if (pre != null) {
+            pre.next = pre.next.next;
+            check = true;
+            this.size--;
+        }
+        else {
+            this.first = null;
+            this.last = null;
+            this.size = 0;
+        }
+        return check;
+    };
+    /**
      * @môtả Hàm xóa một node bất kỳ trong danh sách
      */
     MyLinkedList.prototype.Remove = function (del) {
+        var check = false;
         if (del == this.first) {
             this.RemoveFirst();
         }
@@ -162,9 +182,55 @@ var MyLinkedList = /** @class */ (function () {
         }
         else {
             var beforeNode = this.FindPreviousNode(del);
-            beforeNode.next = del.next;
-            this.size--;
+            check = this.RemoveAfter(beforeNode);
         }
+        return check;
+    };
+    MyLinkedList.prototype.Swap = function (nodeA, nodeB) {
+        var temp = nodeA.data;
+        nodeA.data = nodeB.data;
+        nodeB.data = temp;
+    };
+    MyLinkedList.prototype.InterchangeSortDonGia = function () {
+        for (var p = this.first; p != null; p = p.next) {
+            for (var q = p.next; q != null; q = q.next) {
+                if (p.data.CompareToDonGia(q.data) > 0) {
+                    this.Swap(p, q);
+                }
+            }
+        }
+    };
+    MyLinkedList.prototype.InterchangeSortMaMonAn = function () {
+        for (var p = this.first; p != null; p = p.next) {
+            for (var q = p.next; q != null; q = q.next) {
+                if (p.data.CompareToMaMonAn(q.data) > 0) {
+                    this.Swap(p, q);
+                }
+            }
+        }
+    };
+    MyLinkedList.prototype.FindFirstNode = function (maMonAn) {
+        var p = this._first;
+        while (p != null) {
+            if (p.data.maMonAn.toLocaleLowerCase().localeCompare(maMonAn) === 0) {
+                return p;
+            }
+            p = p.next;
+        }
+        return null;
+    };
+    MyLinkedList.prototype.FindMaxNode = function () {
+        var p = this._first;
+        var maxNode = p;
+        while (p != null) {
+            var max = p.data.donGia;
+            if (max < p.next.data.donGia) {
+                max = p.next.data.donGia;
+                maxNode = p;
+            }
+            p = p.next;
+        }
+        return maxNode;
     };
     return MyLinkedList;
 }());

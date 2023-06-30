@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
-        "outDir": "public/js/custom",
-    }
+  "compilerOptions": {
+    "outDir": "public/js/custom"
+  }
 }

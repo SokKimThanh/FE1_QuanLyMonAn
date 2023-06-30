@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="public/css/thuvien/fontawesome.css" />
+    <link rel="stylesheet" href="public/css/thuvien/bootstrap.css" />
+    <link rel="stylesheet" href="public/css/custom/navbar.css" />
+    <link rel="stylesheet" href="public/css/custom/slideshow.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="public/css/thuvien/fontawesome.css">
-  <link rel="stylesheet" href="public/css/thuvien/bootstrap.css">
-  <link rel="stylesheet" href="public/css/custom/navbar.css">
-  <link rel="stylesheet" href="public/css/custom/slideshow.css">
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img class="img-responsive" src="./public/images/logo.png" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon open"></span>
-        </button>
-        <!-- <div class="collapse navbar-collapse bg-blue" id="collapsibleNavbar"> -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav d-flex justify-content-between w-100">
-            <li class="nav-item">
-              <a class="nav-link active-link" href="index.html">Trang chủ</a>
-            </li>
-            <li class="nav-item">
-              <ul class="navbar-nav d-flex justify-content-between w-100">
-                <li class="nav-item">
-                  <a class="nav-link" href="register.html">Đăng ký</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.html">Đăng nhập</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img class="img-responsive" src="./public/images/logo.png" alt="logo" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon open"></span>
+          </button>
+          <!-- <div class="collapse navbar-collapse bg-blue" id="collapsibleNavbar"> -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav d-flex justify-content-between w-100">
+              <li class="nav-item">
+                <a class="nav-link active-link" href="index.html">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <ul class="navbar-nav d-flex justify-content-between w-100">
+                  <li class="nav-item">
+                    <a class="nav-link" href="register.html">Đăng ký</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Đăng nhập</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section id="slide-show">
+      <!-- phan body -->
+      <div class="container">
+        <div class="row m-auto justify-content-center">
+          <div class="col-9">
+            <img class="col-12 img-fluid main-photo" src="./public/images/1.jpg" alt="main-img" />
+            <img class="col-2 img-fluid thumbnail active" src="./public/images/1.jpg" alt="thumbnails" />
+            <img class="col-2 img-fluid thumbnail" src="./public/images/2.jpg" alt="thumbnails" />
+            <img class="col-2 img-fluid thumbnail" src="./public/images/3.jpg" alt="thumbnails" />
+            <img class="col-2 img-fluid thumbnail" src="./public/images/4.jpg" alt="thumbnails" />
+            <img class="col-2 img-fluid thumbnail" src="./public/images/5.jpg" alt="thumbnails" />
+            <img class="col-1 img-fluid thumbnail" src="./public/images/add.png" alt="thumbnails" />
+          </div>
         </div>
       </div>
-    </nav>
-  </header>
-  <section id="slide-show">
-    <!-- phan body -->
-    <div class="container">
-      <div class="row m-auto justify-content-center">
-        <div class="col-9">
-          <img class="col-12 img-fluid main-photo" src="./public/images/1.jpg" alt="main-img">
-          <img class="col-2 img-fluid thumbnail active" src="./public/images/1.jpg" alt="thumbnails">
-          <img class="col-2 img-fluid thumbnail" src="./public/images/2.jpg" alt="thumbnails">
-          <img class="col-2 img-fluid thumbnail" src="./public/images/3.jpg" alt="thumbnails">
-          <img class="col-2 img-fluid thumbnail" src="./public/images/4.jpg" alt="thumbnails">
-          <img class="col-2 img-fluid thumbnail" src="./public/images/5.jpg" alt="thumbnails">
-          <img class="col-1 img-fluid thumbnail" src="./public/images/add.png" alt="thumbnails">
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="navbar-light">
-    <!-- phan footer -->
-    <p>Sok Kim Thanh</p>
-  </footer>
-  <script src="public/js/thuvien/bootstrap.js"></script>
-  <script src="public/js/custom/slideshow.js"></script>
-  <script src="public/js/custom/navbar.js"></script>
-</body>
-
+    </section>
+    <footer class="navbar-light">
+      <!-- phan footer -->
+      <p>Sok Kim Thanh</p>
+    </footer>
+    <script src="public/js/thuvien/bootstrap.js"></script>
+    <script src="public/js/custom/slideshow.js"></script>
+    <script src="public/js/custom/navbar.js"></script>
+  </body>
 </html>

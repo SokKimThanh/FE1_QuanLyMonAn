@@ -40,7 +40,7 @@ var DanhSachMonAn = /** @class */ (function () {
             case 2:
                 var ma2 = new MonAn();
                 ma.Nhap();
-                this.data.AddFirst(ma);
+                this.data.AddFirst(ma2);
                 break;
             default:
                 break;
