@@ -1,28 +1,28 @@
 /**
  * Sok Kim Thanh
- * Date created: 28/06/2023
- * class MyLinkedList.js
+ * Date created: 01/07/2023
+ * class MyLinkedListGeneric.js
+ * Lập trình tổng quát generic
  */
-import { MyNode } from "./MyNode";
-
-export class MyLinkedList {
+import { MyNodeGeneric } from "./MyNodeGeneric";
+export class MyLinkedList<KieuThamSo> {
   // fields
-  private _first: MyNode;
-  private _last: MyNode;
+  private _first: MyNodeGeneric<KieuThamSo>;
+  private _last: MyNodeGeneric<KieuThamSo>;
   private _size: number;
 
   // properties
-  public get first(): MyNode {
+  public get first(): MyNodeGeneric<KieuThamSo> {
     return this._first;
   }
-  private set first(value: MyNode) {
+  private set first(value: MyNodeGeneric<KieuThamSo>) {
     this._first = value;
   }
 
-  public get last(): MyNode {
+  public get last(): MyNodeGeneric<KieuThamSo> {
     return this._last;
   }
-  private set last(value: MyNode) {
+  private set last(value: MyNodeGeneric<KieuThamSo>) {
     this._last = value;
   }
 
@@ -42,7 +42,7 @@ export class MyLinkedList {
 
   // methods
   public Show(): void {
-    let p: MyNode = this._first;
+    let p: MyNodeGeneric<KieuThamSo> = this._first;
     while (p != null) {
       console.log(p.data.toString() + "\n");
       p = p.next;
@@ -52,8 +52,8 @@ export class MyLinkedList {
    * @decription Hàm thêm một món ăn vào cuối danh sách
    * @param ma Mã món ăn
    */
-  public AddLast(ma: MonAn): MyNode {
-    let newNode: MyNode = new MyNode(ma);
+  public AddLast(ma: KieuThamSo): MyNodeGeneric<KieuThamSo> {
+    let newNode: MyNodeGeneric<KieuThamSo> = new MyNodeGeneric(ma);
     if (this.first != null) {
       this.first = newNode;
       this.last = newNode;
@@ -70,8 +70,8 @@ export class MyLinkedList {
    * @decription Hàm thêm một món ăn vào đầu danh sách
    * @param ma Mã món ăn
    */
-  public AddFirst(ma: MonAn): MyNode {
-    let newNode: MyNode = new MyNode(ma);
+  public AddFirst(ma: KieuThamSo): MyNodeGeneric<KieuThamSo> {
+    let newNode: MyNodeGeneric<KieuThamSo> = new MyNodeGeneric<KieuThamSo>(ma);
     if (this.first != null) {
       this.first = newNode;
       this.last = newNode;
@@ -89,7 +89,7 @@ export class MyLinkedList {
    * @param node node hiện tại
    * @returns Previous node
    */
-  public FindPreviousNode(node: MyNode): MyNode {
+  public FindPreviousNode(node: MyNodeGeneric<KieuThamSo>): MyNodeGeneric<KieuThamSo> {
     let p = this.first;
     while (p != null) {
       if (p.next == node) {
@@ -103,8 +103,8 @@ export class MyLinkedList {
    * @môtả Hàm xóa một node cuối trong danh sách
    * @returns Trả về node xóa cuối
    */
-  public RemoveLast(): MyNode {
-    let temp: MyNode = this.last;
+  public RemoveLast(): MyNodeGeneric<KieuThamSo> {
+    let temp: MyNodeGeneric<KieuThamSo> = this.last;
     // [first.next]-newnode-[last.next]
     if (this.first == null) {
       throw new Error("First cannot be removed.");
@@ -113,7 +113,7 @@ export class MyLinkedList {
       this.last = null;
       this.size = 0;
     } else {
-      let before: MyNode = this.FindPreviousNode(this.last);
+      let before: MyNodeGeneric<KieuThamSo> = this.FindPreviousNode(this.last);
       before.next = null;
       this.last = before;
       this.size--;
@@ -124,8 +124,8 @@ export class MyLinkedList {
    * @môtả Hàm xóa một node đầu trong danh sách
    * @returns Trả về node xóa đầu
    */
-  public RemoveFirst(): MyNode {
-    let temp: MyNode = this.first;
+  public RemoveFirst(): MyNodeGeneric<KieuThamSo> {
+    let temp: MyNodeGeneric<KieuThamSo> = this.first;
     // [first.next]-newnode-[last.next]
     if (this.first == null) {
       throw new Error("First cannot be removed.");
@@ -144,7 +144,7 @@ export class MyLinkedList {
    * @param pre node phia truoc can xoa
    * @returns
    */
-  public RemoveAfter(pre: MyNode): boolean {
+  public RemoveAfter(pre: MyNodeGeneric<KieuThamSo>): boolean {
     let check: boolean = false;
     if (pre != null) {
       pre.next = pre.next.next;
@@ -160,58 +160,58 @@ export class MyLinkedList {
   /**
    * @môtả Hàm xóa một node bất kỳ trong danh sách
    */
-  public Remove(del: MyNode): boolean {
+  public Remove(del: MyNodeGeneric<KieuThamSo>): boolean {
     let check: boolean = false;
     if (del == this.first) {
       this.RemoveFirst();
     } else if (del == this.last) {
       this.RemoveLast();
     } else {
-      let beforeNode: MyNode = this.FindPreviousNode(del);
+      let beforeNode: MyNodeGeneric<KieuThamSo> = this.FindPreviousNode(del);
       check = this.RemoveAfter(beforeNode);
     }
     return check;
   }
-  public Swap(nodeA: MyNode, nodeB: MyNode): void {
-    let temp: MonAn = nodeA.data;
+  public Swap(nodeA: MyNodeGeneric<KieuThamSo>, nodeB: MyNodeGeneric<KieuThamSo>): void {
+    let temp: KieuThamSo = nodeA.data;
     nodeA.data = nodeB.data;
     nodeB.data = temp;
   }
   public InterchangeSortDonGia(): void {
-    for (let p: MyNode = this.first; p != null; p = p.next) {
-      for (let q: MyNode = p.next; q != null; q = q.next) {
-        if (p.data.CompareToDonGia(q.data) > 0) {
+    for (let p: MyNodeGeneric<KieuThamSo> = this.first; p != null; p = p.next) {
+      for (let q: MyNodeGeneric<KieuThamSo> = p.next; q != null; q = q.next) {
+        if (p.data < q.data) {
           this.Swap(p, q);
         }
       }
     }
   }
   public InterchangeSortMaMonAn(): void {
-    for (let p: MyNode = this.first; p != null; p = p.next) {
-      for (let q: MyNode = p.next; q != null; q = q.next) {
-        if (p.data.CompareToMaMonAn(q.data) > 0) {
+    for (let p: MyNodeGeneric<KieuThamSo> = this.first; p != null; p = p.next) {
+      for (let q: MyNodeGeneric<KieuThamSo> = p.next; q != null; q = q.next) {
+        if (p.data > q.data) {
           this.Swap(p, q);
         }
       }
     }
   }
-  public FindFirstNode(maMonAn: string): MyNode {
-    let p: MyNode = this._first;
-    while (p != null) {
-      if (p.data.maMonAn.toLocaleLowerCase().localeCompare(maMonAn) === 0) {
-        return p;
+  public FindFirstNode(data: KieuThamSo): MyNodeGeneric<KieuThamSo> {
+    let node: MyNodeGeneric<KieuThamSo> = this._first;
+    while (node != null) {
+      if (node.data == data) {
+        return node;
       }
-      p = p.next;
+      node = node.next;
     }
     return null;
   }
-  public FindMaxNode(): MyNode {
-    let p: MyNode = this._first;
-    let maxNode: MyNode = p;
+  public FindMaxNode(): MyNodeGeneric<KieuThamSo> {
+    let p: MyNodeGeneric<KieuThamSo> = this._first;
+    let maxNode: MyNodeGeneric<KieuThamSo> = p;
     while (p != null) {
-      let max: number = p.data.donGia;
-      if (max < p.next.data.donGia) {
-        max = p.next.data.donGia;
+      let max: KieuThamSo = p.data;
+      if (max < p.next.data) {
+        max = p.next.data;
         maxNode = p;
       }
       p = p.next;
