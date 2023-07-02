@@ -1,4 +1,9 @@
 # QuanLyMonAn
+## Cập nhật 2/07/2023
+- Ôn tập angular (Xem video google)
+- Thực hành angular
+- Thêm thanh chức năng
+- ![Alt text](image-3.png)
 ## cập nhật 1/07/2023
 - thêm class generic node và linked list
 - ![Alt text](image.png)

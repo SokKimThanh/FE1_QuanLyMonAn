@@ -1,82 +1,78 @@
 /* debug css */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    /* outline: 1px solid green; */
-    /* border: 1px solid green; */
-    /* background-color: black; */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid green; */
+  /* border: 1px solid green; */
+  /* background-color: black; */
 }
 
 /* dan trang layout grid body */
-body {
-    display: grid;
-    grid-template-rows: 6.5% auto 10%;
-    height: 100vh;
+body,
+html {
+  height: 100vh;
 }
 
 /* co dinh mau chu */
 .navbar-brand {
-    color: white !important;
+  color: white !important;
 }
 
 /* co dinh chieu cao */
 .img-responsive {
-    height: 50px;
+  height: 50px;
 }
 
 /* to mau tim */
 .navbar-light {
-    background: #5E00F1 !important;
-    color: white !important;
-    transition: .2s;
+  background: #5e00f1 !important;
+  color: white !important;
+  transition: 0.2s;
 }
 
 /* to mau tim */
 .navbar-dark,
 .navbar-toggler {
-    background: #2E0063 !important;
-    color: white !important;
-    transition: .2s;
+  background: #2e0063 !important;
+  color: white !important;
+  transition: 0.2s;
 }
 
 /* khoanh tron */
 .navbar-toggler {
-    outline: 0 !important;
-    border: none !important;
+  outline: 0 !important;
+  border: none !important;
 }
 
 /* nut mo */
 .navbar-toggler-icon.open {
-    background-image: url(../images/copen.webp) !important;
-    transition: .5s;
+  background-image: url(../images/copen.webp) !important;
+  transition: 0.5s;
 }
 
 /* nut dong */
 .navbar-toggler-icon.close {
-    background-image: url(../images/cclose.webp) !important;
-    transition: .5s;
+  background-image: url(../images/cclose.webp) !important;
+  transition: 0.5s;
 }
 
 .nav-link {
-    color: white;
+  color: white;
 }
-
 
 .nav-link:hover,
 .nav-link:active,
 .active-link {
-    color: #00f199;
+  color: #00f199;
 }
- 
-
 
 /* Footer design here*/
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 28px;
-    text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 28px;
+  text-transform: capitalize;
 }

@@ -8,22 +8,25 @@
 /* --------------------------------*/
 
 .main-photo {
-    height: 700px;
-    width: 900px;
-    margin-bottom: 4px;
+  height: 700px;
+  /* width: 900px; */
+  margin-bottom: 4px;
 }
 
 .thumbnail {
-    opacity: 0.7;
-    height: 100px;
+  opacity: 0.8;
+  height: 100px;
 }
 
 .active {
-    opacity: 1;
-    border: 2px solid red;
-    padding: auto;
+  opacity: 1;
+  border: 2px solid red;
+  padding: auto;
 }
 
 #slide-show {
-    background-image: url(../../images/bg-van-go.png);
+  background-image: url(../../images/bg-van-go.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 }
