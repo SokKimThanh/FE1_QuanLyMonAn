@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+/* debug css */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid green; */
+    /* border: 1px solid green; */
+    /* background-color: black; */
+  }
+  
+  /* dan trang layout grid body */
+  body,
+  html {
+    height: 100vh;
+  }
+  
+  /* co dinh mau chu */
+  .navbar-brand {
+    color: white !important;
+  }
+  
+  /* co dinh chieu cao */
+  .img-responsive {
+    height: 50px;
+  }
+  
+  /* to mau tim */
+  .navbar-light {
+    background: #5e00f1 !important;
+    color: white !important;
+    transition: 0.2s;
+  }
+  
+  /* to mau tim */
+  .navbar-dark,
+  .navbar-toggler {
+    background: #2e0063 !important;
+    color: white !important;
+    transition: 0.2s;
+  }
+  
+  /* khoanh tron */
+  .navbar-toggler {
+    outline: 0 !important;
+    border: none !important;
+  }
+  
+  /* nut mo */
+  .navbar-toggler-icon.open {
+    background-image: url(./assets/images/copen.webp) !important;
+    transition: 0.5s;
+  }
+  
+  /* nut dong */
+  .navbar-toggler-icon.close {
+    background-image: url(./assets/images/cclose.webp) !important;
+    transition: 0.5s;
+  }
+  
+  .nav-link {
+    color: white;
+  }
+  
+  .nav-link:hover,
+  .nav-link:active,
+  .active-link {
+    color: #00f199;
+  }
+  
+  /* Footer design here*/
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 28px;
+    text-transform: capitalize;
+  }
+  
