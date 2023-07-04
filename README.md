@@ -7,6 +7,8 @@
 ![Alt text](./src/assets/images/createnewangularproject.png)
 - cập nhật mã nguồn angular project
 ![Alt text](./src/assets/images/dishes-route.png)
+- component dishes
+![Alt text](./src/assets/images/dishes-route-2.png)
 
 ## Cập nhật 2/07/2023
 
