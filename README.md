@@ -1,5 +1,12 @@
 # QuanLyMonAn
 
+# Cập nhật 4/07/2023
+
+- ôn tập typescript (Coursera)
+- Chép file slide show vào project angular
+![Alt text](./src/assets/images/createnewangularproject.png)
+- cập nhật mã nguồn angular project
+
 ## Cập nhật 2/07/2023
 
 - Ôn tập angular (Xem video google)

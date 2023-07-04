@@ -94,9 +94,9 @@
 
             ],
             "scripts": [
-              "src/assets/js/thuvien/bootstrap.min.js",
-              "src/assets/js/custom/navbar.js",
-              "src/assets/js/custom/slideshow.js"
+              "src/assets/bootstrap.min.js",
+              "src/assets/navbar.js",
+              "src/assets/slideshow.js"
             ]
           }
         }

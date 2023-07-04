@@ -2,11 +2,37 @@
 @CreatedDate: 02/07/2023
 @CreatedFile: main.html
 -->
-
-<main>
-  <header>
-    <img src="../assets/logo.svg" alt="fairhouse" />
-  </header>
+<header>
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img class="img-fluid" src="./assets/images/logo.png" alt="logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon open"></span>
+      </button>
+      <!-- <div class="collapse navbar-collapse bg-blue" id="collapsibleNavbar"> -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav d-flex justify-content-between w-100">
+          <li class="nav-item">
+            <a class="nav-link active-link" href="index.html">Trang chủ</a>
+          </li>
+          <!-- <li class="nav-item">
+              <ul class="navbar-nav d-flex justify-content-between w-100">
+                <li class="nav-item">
+                  <a class="nav-link" href="register.html">Đăng ký</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html">Đăng nhập</a>
+                </li>
+              </ul>
+            </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="container">
   <section>
     <!-- Description -->
     <!-- @input locationList parent sent data to child component housinglist -->
@@ -18,7 +44,7 @@
       (locationSelectedEvent)="updateSelectedLocation($event)"></app-housing-list>
     <article>
       <ng-container *ngIf="selectedLocation">
-        <img [src]="selectedLocation.photo">
+        <img [src]="selectedLocation.photo" [alt]="selectedLocation.name">
         <p>{{selectedLocation.name}}</p>
         <p>{{selectedLocation.availableUnits}}</p>
         <p>{{selectedLocation.city}}, {{selectedLocation.state}}</p>
@@ -27,4 +53,11 @@
       </ng-container>
     </article>
   </section>
+  <section>
+    <app-dishes-route></app-dishes-route>
+  </section>
 </main>
+<footer class="navbar-light">
+  <!-- phan footer -->
+  <p>Sok Kim Thanh</p>
+</footer>

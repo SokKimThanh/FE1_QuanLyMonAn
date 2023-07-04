@@ -4,6 +4,7 @@
 * @createdClass MyNode.js
 * @description CTDL va giai thuat, lap trinh huong doi tuong
 */
+import { MonAn } from "./MonAn";
 export class MyNode {
     //fields
     /**
