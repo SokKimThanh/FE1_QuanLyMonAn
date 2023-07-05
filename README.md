@@ -1,5 +1,15 @@
 # QuanLyMonAn
 
+
+## cập nhật 05/07/2023
+
+- Thêm xóa sửa đọc ghi file sắp xếp tìm kiếm chi tiết
+- Danh sách món ăn service
+![Alt text](./src/assets/images/danhsachmonanservice.png)
+- kéo thả
+![Alt text](./src/assets/images/keotha-1.png)
+![Alt text](./src/assets/images/keotha-2.png)
+
 ## Cập nhật 4/07/2023
 
 - ôn tập typescript (Coursera)

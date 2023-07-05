@@ -2,18 +2,55 @@
     <h2 class="text-white bg-black text-center">Ứng dụng slide show</h2>
     <!-- phan body -->
     <div class="container">
-        <div class="row">
-            <div class="col-12 bg-danger">
-                <div class="row">
-                    <img class="col-2 img-fluid" src="./assets/images/c-write.png" alt="writefile" />
-                    <img class="col-2 img-fluid" src="./assets/images/c-read.png" alt="readfile" />
-                    <img class="col-2 img-fluid" src="./assets/images/c-sort.png" alt="sort" />
-                    <img class="col-2 img-fluid" src="./assets/images/c-find.png" alt="find" />
-                    <img class="col-2 img-fluid" src="./assets/images/c-remove.png" alt="remove" />
-                    <img class="col-2 img-fluid" src="./assets/images/c-add.png" alt="add" />
+        <!-- Modal Add File -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- Tieu de: modal -->
+                        <h5 class="modal-title" id="staticBackdropLabel">Add File</h5>
+                        <!-- nut x: thoat -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- ----------- -->
+                    <!-- IMPORTANT!- -->
+                    <!-- ----------- -->
+                    <div class="modal-body">
+                        <!-- noi dung: modal -->
+                        <!-- keo tha hinh -->
+                        <div id="dropzone" class="dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop"
+                                draggable="true" (dragstart)="onDragStart($event)">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 bg-danger">
+                <div class="row">
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
+                        (click)="writefile()" />
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
+                        (click)="readfile()" />
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort()" />
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" (click)="find()" />
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-remove.png" alt="remove"
+                        (click)="remove()" />
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" (click)="add()" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="row m-auto justify-content-center">
             <div class="col-12">
                 <img class="col-12 img-fluid main-photo" src="./assets/images/1.jpg" alt="main-img" />

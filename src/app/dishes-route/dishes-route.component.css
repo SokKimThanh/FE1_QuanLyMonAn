@@ -1,8 +1,12 @@
 /**
-* Sok Kim Thanh
-* Slideshow.css
-* Date: 27/06/2023 
-*/
+ * Sok Kim Thanh
+ * Slideshow.css
+ * Date: 27/06/2023 
+ *---------------------------------------
+ * @updateDate: 05/07/2023
+ * @updateContent: add drop zone style
+ */
+
 /* --------------------------------*/
 /* ------Main photo style----------*/
 /* --------------------------------*/
@@ -29,4 +33,29 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+}
+
+img.btnIcon {
+    cursor: pointer;
+}
+
+/* --------------------------------*/
+/* -----------Modal style----------*/
+/* --------------------------------*/
+/* drag and drop zone style */
+.dropzone {
+    border: 2px dashed rgb(24, 23, 23);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div1,
+#div2,
+#div3,
+#div4 {
+    float: left;
+    width: 55px;
+    height: 55px;
+    border: 1px solid black;
 }

@@ -10,14 +10,17 @@ export class MonAn {
     private _tenMonAn: string;
     private _donGia: number;
     private _soLuong: number;
+    private _url: string;
 
     // constructor 
-    constructor(_maMonAn: string = "", _tenMonAn: string = "", _donGia: number = 0, _soLuong: number = 0) {
+    constructor(_maMonAn: string = "", _tenMonAn: string = "", _donGia: number = 0, _soLuong: number = 0, _url: string = "") {
         this._maMonAn = _maMonAn;
         this._tenMonAn = _tenMonAn;
         this._donGia = _donGia;
         this._soLuong = _soLuong;
+        this._url = _url;
     }
+
     // properties
     public get maMonAn(): string {
         return this._maMonAn;
@@ -46,7 +49,14 @@ export class MonAn {
     public set soLuong(value: number) {
         this._soLuong = value;
     }
+    public get url(): string {
+        return this._url;
+    }
+    public set url(value: string) {
+        this._url = value;
+    }
 
+    // medthods
     private getRndInteger(min: /* int */number, max: /* int */number) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
@@ -75,13 +85,17 @@ export class MonAn {
         }
         return 0;
     }
-    public Nhap(): void {
+
+    // Input data
+    public Nhap(url: string = ""): void {
         this.maMonAn = "maMonAn" + this.getRndInteger(1, 999);
         this.tenMonAn = "tenMonAn" + this.getRndInteger(1, 999);
         this.donGia = this.getRndInteger(1, 999);
         this.soLuong = this.getRndInteger(1, 999);
+        this.url = url;
     }
 
+    // tostring
     public toString(): string {
         return `${this.maMonAn, -15}${this.tenMonAn, -15}${this.soLuong, -15}${this.donGia, -15}`
     }
