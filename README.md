@@ -1,9 +1,15 @@
 # QuanLyMonAn
 
+## Cập nhật 12/07/2023
+- Thực hiện chức năng thêm 1 hình ảnh vào slide show
+- Thêm nút chạy slide show
+- Thực hiện chức năng chạy slide show
+- Thêm nút xóa
+![Alt text](./src/assets/images/chucnangaddslideshow.png)
 
 ## cập nhật 05/07/2023
 
-- Thêm xóa sửa đọc ghi file sắp xếp tìm kiếm chi tiết
+- Thêm nút xóa sửa đọc ghi file sắp xếp tìm kiếm chi tiết
 - Danh sách món ăn service
 ![Alt text](./src/assets/images/danhsachmonanservice.png)
 - kéo thả

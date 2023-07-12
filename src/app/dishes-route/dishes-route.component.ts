@@ -26,12 +26,12 @@ import { MyNode } from '../model/MyNode';
 })
 
 export class DishesRouteComponent {
-  /* danh sach mon an */
-
+  // tieu de 
   title = 'appBootstrap';
-
-  closeResult: string = '';
+  /* danh sach mon an */
   dishes: MonAn[] = [];
+  // clear interval slideshow
+  intervalID: any;
   constructor(private modalService: NgbModal, private data: DanhSachMonAnService) {
     data = new DanhSachMonAnService();
     this.dishes = data.getMonAnList();
@@ -43,6 +43,9 @@ export class DishesRouteComponent {
     })
   }
   ngAfterContentInit() {
+
+  }
+  play() {
     // khai bao
     let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
     let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
@@ -72,27 +75,39 @@ export class DishesRouteComponent {
         // vị trí kế tiếp là vị trí đang chọn
         viTriChonHinhKeTiep = i;
       });
-      let chuyenHinh = function () {
-        viTriChonHinhKeTiep++;// vị trí hình nhỏ kế tiếp tự tăng lên 1
-        /** 
-         * figure 1. Out of bounds check
-         * */
-        if (viTriChonHinhKeTiep == thumbnails.length - 1) {
-          viTriChonHinhKeTiep = 0;//chuyển về vị trí ban đầu
-        }
-        /** 
-         * figure 2. Tô màu vị trí kế tiếp
-         * */
-        mainPhoto!.setAttribute('src', thumbnails[viTriChonHinhKeTiep].getAttribute('src')!);// thay hình lớn bằng hình nhỏ kế tiếp
-        thumbnails[viTriChonHinhKeTiep].classList.add('active');// thay đường viền cho hình nhỏ kế tiếp
-        hinhNhoHienTai.classList.remove('active');// xóa đường viền của hình nhỏ hiện tại
-        hinhNhoHienTai = thumbnails[viTriChonHinhKeTiep];// chuyển hình nhỏ hiện tại sang hình nhỏ kế tiếp
-      }
-      /**
-       * @mota tự động chọn & chuyển ảnh ở vị trí kế tiếp
-       */
-      setInterval(chuyenHinh, 3000);
     }
+    let chuyenHinh = function () {
+      viTriChonHinhKeTiep++;// vị trí hình nhỏ kế tiếp tự tăng lên 1
+
+      /** 
+       * figure 1. Out of bounds check
+       * */
+      if (viTriChonHinhKeTiep == thumbnails.length) {
+        viTriChonHinhKeTiep = 0;//chuyển về vị trí ban đầu
+      }
+      /** 
+       * figure 2. Tô màu vị trí kế tiếp
+       * */
+      let hinhKeTiep = thumbnails[viTriChonHinhKeTiep];
+      if (hinhKeTiep && hinhKeTiep.getAttribute('src')) {
+        // Do something with object.getAttribute()
+        mainPhoto!.setAttribute('src', hinhKeTiep.getAttribute('src')!);// thay hình lớn bằng hình nhỏ kế tiếp
+        hinhKeTiep.classList.add('active');// thay đường viền cho hình nhỏ kế tiếp
+        hinhNhoHienTai.classList.remove('active');// xóa đường viền của hình nhỏ hiện tại
+        hinhNhoHienTai = hinhKeTiep;// chuyển hình nhỏ hiện tại sang hình nhỏ kế tiếp
+      }
+    }
+    /**
+     * @mota tự động chọn & chuyển ảnh ở vị trí kế tiếp
+     */
+    clearInterval(this.intervalID);
+    this.intervalID = setInterval(chuyenHinh, 3000);
+  }
+  /**
+   * Dừng slideshow
+   */
+  stopClock() {
+    clearInterval(this.intervalID);
   }
   writefile() {
     alert("writefile");

@@ -38,7 +38,7 @@
         <!-- ------------------------------- -->
         <!-- ------------------------------- -->
         <div class="row">
-            <div class="col-12 bg-danger">
+            <div class="col-12 bg-warning">
                 <div class="row">
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
                         (click)="writefile()" />
@@ -46,9 +46,11 @@
                         (click)="readfile()" />
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort()" />
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" (click)="find()" />
-
+                    <button type="button" class="btn btn-primary col-2">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="sort" (click)="play()" />
+                    </button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
                     </button>
@@ -57,9 +59,9 @@
         </div>
 
         <div class="row m-auto justify-content-center">
-            <div class="col-12">
-                <img class="col-12 img-fluid main-photo" src="./assets/images/1.jpg" alt="main-img" />
-                <article class="row">
+            <div class="col-12" *ngIf="dishes.length">
+                <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
+                <div class="row">
                     <!--fields -->
                     <!-- ******************************** -->
                     <!--    private _maMonAn: string;
@@ -68,15 +70,12 @@
                                 private _soLuong: number;
                                 private _url_image: string; -->
                     <!-- ******************************** -->
-                    <ng-container *ngFor="let item of dishes; let i as index">
-                        <div class="article-group-remove">
-                            <img class="col-12 img-fluid thumbnail active" [src]="item.url_image"
-                                [alt]="item.tenMonAn" />
-                            <img class="col-4 img-fluid btnIcon btnRemove" src="./assets/images/c-remove.png"
-                                alt="remove" (click)="remove(item)" />
-                        </div>
-                    </ng-container>
-                </article>
+                    <div class="col-12 col-sm-2 article-group-remove m-1" *ngFor="let item of dishes">
+                        <img class="img-fluid thumbnail" [src]="item.url_image" [alt]="item.tenMonAn" />
+                        <button (click)="remove(item)"><img class="col-3 img-fluid btnIcon btnRemove"
+                                src="./assets/images/c-remove.png" alt="remove" /></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

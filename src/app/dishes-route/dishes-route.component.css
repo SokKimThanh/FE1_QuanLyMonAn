@@ -5,6 +5,9 @@
  *---------------------------------------
  * @updateDate: 05/07/2023
  * @updateContent: add drop zone style
+  *---------------------------------------
+ * @updateDate: 12/07/2023
+ * @updateContent: add image function
  */
 
 /* --------------------------------*/
@@ -63,7 +66,6 @@ img.btnIcon {
 
 .article-group-remove {
     position: relative;
-    width: 16%;
 }
 
 .btnRemove {
