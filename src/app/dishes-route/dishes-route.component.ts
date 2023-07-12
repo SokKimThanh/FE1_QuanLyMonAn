@@ -1,15 +1,23 @@
 /**----------------------------------------------------------------
   * @author Sok Kim Thanh
   * @datecreated 23/06/2023
-  * @filename slideshow.js
+  * @filename dishes-route.component.ts
   * ----------------------------------------------------------------
-  * @updated 05/07/2023
+  * @author Sok Kim Thanh
+  * @updatedDate 05/07/2023
+  * @filename dishes-route.component.ts
   * @content adding, finding, searching, sorting, writing, reading
+  * ----------------------------------------------------------------
+  * @author Sok Kim Thanh
+  * @updatedDate 12/07/2023
+  * @filename dishes-route.component.ts
+  * @content them 1 doi tuong vao danh sach, xoa 1 doi tuong khoi danh sach, hien thi, xoa hinh anh
   * */
 import { Component } from '@angular/core';
 import { DanhSachMonAnService } from '../model/DanhSachMonAn';
 import { MonAn } from '../model/MonAn';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { MyNode } from '../model/MyNode';
 
 @Component({
   selector: 'app-dishes-route',
@@ -23,18 +31,24 @@ export class DishesRouteComponent {
   title = 'appBootstrap';
 
   closeResult: string = '';
-
+  dishes: MonAn[] = [];
   constructor(private modalService: NgbModal, private data: DanhSachMonAnService) {
     data = new DanhSachMonAnService();
+    this.dishes = data.getMonAnList();
   }
-
+  closeModal() {
+    let close_button = document.getElementById('close_button');
+    close_button?.addEventListener('click', function () {
+      console.log("close modal");
+    })
+  }
   ngAfterContentInit() {
     // khai bao
     let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
     let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
     let hinhNhoHienTai = thumbnails[0];// hình nhỏ hiện tại mặc định
     let viTriChonHinhKeTiep = 0;//vị trí chọn hình kế tiếp
-    let data = new DanhSachMonAnService();
+
     /**
      * @param i vị trí hiện tại trong danh sách hình nhỏ
      * @mota chọn hình bất kỳ tại vị trí hình nhỏ bất kỳ
@@ -93,21 +107,45 @@ export class DishesRouteComponent {
   find() {
     alert("find");
   }
-  remove() {
-    alert("remove");
+
+
+  /**
+   * 
+   * @param monan Mon an tren danh sach can xoa
+   */
+  remove(monan: MonAn) {
+    // alert("remove");
+    // xác nhận xóa 
+    let confirm: boolean = window.confirm("Đồng ý xóa?");
+    // xoa tren giao dien
+
+    // xoa trong danh sach
+    if (confirm == true) {
+      this.data.Remove(new MyNode(monan));
+    }
   }
 
   add() {
     /* nhap thong tin mon an */
-    // let ma: MonAn = new MonAn();
-    // ma.Nhap();
-
-
+    let ma: MonAn = new MonAn();
+    ma.Nhap();
+    let dragImage = document.getElementById('dragImage');
+    let url_image = dragImage!.getAttribute('src')!;
+    if (url_image != null && url_image != undefined && url_image != "") {
+      ma.url_image = url_image;//tim thay hình ảnh mới
+    }
     /**
      * 1. Add Last
      * 2. Add First
      */
-    // this.data.Add(1, ma);
+    let check: MyNode = this.data.Add(1, ma);
+    // Kiem tra them thanh cong
+    if (check != null) {
+      // add  thanh cong thi tat modal
+      this.closeModal();
+      //refresh danh sach hinh nho
+      this.dishes = this.data.getMonAnList();
+    }
   }
   onDrop(ev: DragEvent) {
     ev.preventDefault();

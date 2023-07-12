@@ -59,3 +59,16 @@ img.btnIcon {
     height: 55px;
     border: 1px solid black;
 }
+
+
+.article-group-remove {
+    position: relative;
+    width: 16%;
+}
+
+.btnRemove {
+    position: absolute;
+    right: 0;
+    margin-right: 12px;
+    top: 0
+}

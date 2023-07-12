@@ -10,7 +10,7 @@ export class MonAn {
     private _tenMonAn: string;
     private _donGia: number;
     private _soLuong: number;
-    private _url: string;
+    private _url_image: string;
 
     // constructor 
     constructor(_maMonAn: string = "", _tenMonAn: string = "", _donGia: number = 0, _soLuong: number = 0, _url: string = "") {
@@ -18,7 +18,7 @@ export class MonAn {
         this._tenMonAn = _tenMonAn;
         this._donGia = _donGia;
         this._soLuong = _soLuong;
-        this._url = _url;
+        this._url_image = _url;
     }
 
     // properties
@@ -49,11 +49,11 @@ export class MonAn {
     public set soLuong(value: number) {
         this._soLuong = value;
     }
-    public get url(): string {
-        return this._url;
+    public get url_image(): string {
+        return this._url_image;
     }
-    public set url(value: string) {
-        this._url = value;
+    public set url_image(value: string) {
+        this._url_image = value;
     }
 
     // medthods
@@ -87,16 +87,16 @@ export class MonAn {
     }
 
     // Input data
-    public Nhap(url: string = ""): void {
-        this.maMonAn = "maMonAn" + this.getRndInteger(1, 999);
-        this.tenMonAn = "tenMonAn" + this.getRndInteger(1, 999);
-        this.donGia = this.getRndInteger(1, 999);
-        this.soLuong = this.getRndInteger(1, 999);
-        this.url = url;
+    public Nhap(url_image: string = ""): void {
+        this._maMonAn = "maMonAn" + this.getRndInteger(1, 999);
+        this._tenMonAn = "tenMonAn" + this.getRndInteger(1, 999);
+        this._donGia = this.getRndInteger(1, 999);
+        this._soLuong = this.getRndInteger(1, 999);
+        this._url_image = url_image;
     }
 
     // tostring
     public toString(): string {
-        return `${this.maMonAn, -15}${this.tenMonAn, -15}${this.soLuong, -15}${this.donGia, -15}`
+        return `${this._maMonAn, -15}${this._tenMonAn, -15}${this._soLuong, -15}${this._donGia, -15}${this._url_image}`;
     }
 }

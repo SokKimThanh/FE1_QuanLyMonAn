@@ -43,20 +43,26 @@ export class MyLinkedList {
   }
 
   // methods
-  public Show(): void {
+  public Show(): MonAn[] {
     let p: MyNode = this._first;
+    let list: MonAn[] = [];
     while (p != null) {
-      console.log(p.data.toString() + "\n");
+      // console.log(p.data.toString() + "\n");
+      list.push(p.data);
       p = p.next!;
     }
+    return list;
   }
+
+
   /**
    * @decription Hàm thêm một món ăn vào cuối danh sách
    * @param ma Mã món ăn
    */
   public AddLast(ma: MonAn): MyNode {
     let newNode: MyNode = new MyNode(ma);
-    if (this.first != null) {
+    // TH: Danh sach rong
+    if (this.first == null) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -74,7 +80,8 @@ export class MyLinkedList {
    */
   public AddFirst(ma: MonAn): MyNode {
     let newNode: MyNode = new MyNode(ma);
-    if (this.first != null) {
+    // TH: Danh sach rong
+    if (this.first == null) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -174,7 +181,7 @@ export class MyLinkedList {
     }
     return check;
   }
-  public Swap(nodeA: MyNode, nodeB: MyNode): void {
+  private Swap(nodeA: MyNode, nodeB: MyNode): void {
     let temp: MonAn = nodeA.data;
     nodeA.data = nodeB.data;
     nodeB.data = temp;

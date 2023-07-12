@@ -12,6 +12,7 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { MonAn } from "./MonAn";
 import { MyLinkedList } from "./MyLinkedList";
+import { MyNode } from "./MyNode";
 @Injectable({
     providedIn: 'root',
 })
@@ -35,17 +36,32 @@ export class DanhSachMonAnService {
      * @param ma ma mon an
      * @param luaChon lua chon 1: addlast 2: addfirst
      */
-    public Add(luaChon: number, ma: MonAn): void {
+    public Add(luaChon: number, ma: MonAn): MyNode {
+        let myNode: MyNode = new MyNode(ma);
         switch (luaChon) {
             case 1:
-                this.data.AddLast(ma);
+                myNode = this.data.AddLast(ma);
                 break;
             case 2:
-                this.data.AddFirst(ma);
+                myNode = this.data.AddFirst(ma);
                 break;
             default:
                 break;
         }
+        return myNode;
+    }
+    /**
+     * Hàm xóa 1 phần tử trong danh sach
+     */
+    public Remove(del: MyNode): void {
+        this.data.Remove(del);
+    }
+    /**
+     * 
+     * @returns danh sách món ăn
+     */
+    public getMonAnList(): MonAn[] {
+        return this.data.Show();
     }
 
     /**

@@ -11,7 +11,8 @@
                         <!-- Tieu de: modal -->
                         <h5 class="modal-title" id="staticBackdropLabel">Add File</h5>
                         <!-- nut x: thoat -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button id="close_button" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <!-- ----------- -->
                     <!-- IMPORTANT!- -->
@@ -26,11 +27,16 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
+                        <button type="button" class="btn btn-primary" (click)="add()">Add</button>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- ------------------------------- -->
+        <!-- ------------------------------- -->
+        <!-- ----- Hình ảnh slide show ----- -->
+        <!-- ------------------------------- -->
+        <!-- ------------------------------- -->
         <div class="row">
             <div class="col-12 bg-danger">
                 <div class="row">
@@ -40,12 +46,11 @@
                         (click)="readfile()" />
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort()" />
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" (click)="find()" />
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-remove.png" alt="remove"
-                        (click)="remove()" />
+
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" (click)="add()" />
+                        <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
                     </button>
                 </div>
             </div>
@@ -54,11 +59,24 @@
         <div class="row m-auto justify-content-center">
             <div class="col-12">
                 <img class="col-12 img-fluid main-photo" src="./assets/images/1.jpg" alt="main-img" />
-                <img class="col-2 img-fluid thumbnail active" src="./assets/images/1.jpg" alt="thumbnails" />
-                <img class="col-2 img-fluid thumbnail" src="./assets/images/2.jpg" alt="thumbnails" />
-                <img class="col-2 img-fluid thumbnail" src="./assets/images/3.jpg" alt="thumbnails" />
-                <img class="col-2 img-fluid thumbnail" src="./assets/images/4.jpg" alt="thumbnails" />
-                <img class="col-2 img-fluid thumbnail" src="./assets/images/5.jpg" alt="thumbnails" />
+                <article class="row">
+                    <!--fields -->
+                    <!-- ******************************** -->
+                    <!--    private _maMonAn: string;
+                                private _tenMonAn: string;
+                                private _donGia: number;
+                                private _soLuong: number;
+                                private _url_image: string; -->
+                    <!-- ******************************** -->
+                    <ng-container *ngFor="let item of dishes; let i as index">
+                        <div class="article-group-remove">
+                            <img class="col-12 img-fluid thumbnail active" [src]="item.url_image"
+                                [alt]="item.tenMonAn" />
+                            <img class="col-4 img-fluid btnIcon btnRemove" src="./assets/images/c-remove.png"
+                                alt="remove" (click)="remove(item)" />
+                        </div>
+                    </ng-container>
+                </article>
             </div>
         </div>
     </div>
