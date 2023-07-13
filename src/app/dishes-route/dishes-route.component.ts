@@ -46,6 +46,8 @@ export class DishesRouteComponent {
 
   }
   play() {
+    //reset data;
+    this.dishes = this.data.getMonAnList();
     // khai bao
     let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
     let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
@@ -98,17 +100,16 @@ export class DishesRouteComponent {
       }
     }
     /**
-     * @mota tự động chọn & chuyển ảnh ở vị trí kế tiếp
+     * @mota Dừng thread cũ slideshow
      */
     clearInterval(this.intervalID);
+    /**
+     * @mota tự động chọn & chuyển ảnh ở vị trí kế tiếp
+     * tạo thread mới(bất đồng bộ)
+     */
     this.intervalID = setInterval(chuyenHinh, 3000);
   }
-  /**
-   * Dừng slideshow
-   */
-  stopClock() {
-    clearInterval(this.intervalID);
-  }
+
   writefile() {
     alert("writefile");
   }
@@ -137,6 +138,8 @@ export class DishesRouteComponent {
     // xoa trong danh sach
     if (confirm == true) {
       this.data.Remove(new MyNode(monan));
+      console.log(this.data.Data.size);
+      this.dishes = this.data.getMonAnList();
     }
   }
 
@@ -154,6 +157,7 @@ export class DishesRouteComponent {
      * 2. Add First
      */
     let check: MyNode = this.data.Add(1, ma);
+    console.log(this.data.Data.size)
     // Kiem tra them thanh cong
     if (check != null) {
       // add  thanh cong thi tat modal
@@ -162,6 +166,7 @@ export class DishesRouteComponent {
       this.dishes = this.data.getMonAnList();
     }
   }
+
   onDrop(ev: DragEvent) {
     ev.preventDefault();
     // alert("onDrop");

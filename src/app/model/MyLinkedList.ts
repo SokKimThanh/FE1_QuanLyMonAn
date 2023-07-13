@@ -171,9 +171,9 @@ export class MyLinkedList {
    */
   public Remove(del: MyNode): boolean {
     let check: boolean = false;
-    if (del == this.first) {
+    if (del.data.CompareToMaMonAn(this.first.data)) {
       this.RemoveFirst();
-    } else if (del == this.last) {
+    } else if (del.data.CompareToMaMonAn(this.last.data)) {
       this.RemoveLast();
     } else {
       let beforeNode: MyNode = this.FindPreviousNode(del);
