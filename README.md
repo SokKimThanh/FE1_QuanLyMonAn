@@ -5,7 +5,9 @@
 - Thực hiện chức năng xóa 1 món ăn ra khỏi danh sách
 - Thực hiện chức năng sắp xếp
 - Thực hiện chức năng load hình mặc định
-- Thực hiện chức năng đọc ghi file
+- Thực hiện chức năng đọc ghi file - failed
+- Thực hiện chức năng sắp xếp
+![Alt text](./src/assets/images/chucnangsapxep.png)
 
 ## Cập nhật 12/07/2023
 

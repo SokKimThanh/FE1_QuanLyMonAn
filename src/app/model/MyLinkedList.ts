@@ -186,6 +186,9 @@ export class MyLinkedList {
     nodeA.data = nodeB.data;
     nodeB.data = temp;
   }
+  /**
+   * Sắp xếp interchange đơn giá
+   */
   public InterchangeSortDonGia(): void {
     for (let p: MyNode = this.first; p != null; p = p.next!) {
       for (let q: MyNode = p.next!; q != null; q = q.next!) {
@@ -195,6 +198,10 @@ export class MyLinkedList {
       }
     }
   }
+
+  /**
+   * Sắp xếp interchange mã món ăn
+   */
   public InterchangeSortMaMonAn(): void {
     for (let p: MyNode = this.first; p != null; p = p.next!) {
       for (let q: MyNode = p.next!; q != null; q = q.next!) {
@@ -204,6 +211,23 @@ export class MyLinkedList {
       }
     }
   }
+  /**
+    * Sắp xếp interchange mã món ăn
+    */
+  public InterchangeSortTenMonAn(): void {
+    for (let p: MyNode = this.first; p != null; p = p.next!) {
+      for (let q: MyNode = p.next!; q != null; q = q.next!) {
+        if (p.data.CompareToTenMonAn(q.data) > 0) {
+          this.Swap(p, q);
+        }
+      }
+    }
+  }
+  /**
+   * 
+   * @param maMonAn mã mon ăn
+   * @returns trả về node
+   */
   public FindFirstNode(maMonAn: string): MyNode {
     let p: MyNode = this._first;
     while (p != null) {

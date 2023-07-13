@@ -14,15 +14,17 @@
                         <button id="close_button" type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
-                    <!-- ----------- -->
-                    <!-- IMPORTANT!- -->
-                    <!-- ----------- -->
+                    <!-- ----------------- -->
+                    <!-- KEO THA HINH ANH!--->
+                    <!-- ----------------- -->
                     <div class="modal-body">
                         <!-- noi dung: modal -->
                         <!-- keo tha hinh -->
-                        <div id="dropzone" class="dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+                        <div id="dropzone" class="dropzone dropzone-flex" (dragover)="onDragOver($event)"
+                            (drop)="onDrop($event)">
                             <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop"
                                 draggable="true" (dragstart)="onDragStart($event)">
+                            <!-- <input type="file" (change)="onFileSelected($event)"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -38,19 +40,35 @@
         <!-- ------------------------------- -->
         <!-- ------------------------------- -->
         <div class="row">
-            <div class="col-12 bg-warning">
+            <div class="col-6 bg-warning">
                 <div class="row">
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
-                        (click)="writefile()" />
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
-                        (click)="readfile()" />
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort()" />
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" (click)="find()" />
-                    <button type="button" class="btn btn-primary col-2">
+                    <div class="col-sm-12">
+                        <label class="form-label" for="gallery-search">Search Gallery</label>
+                        <input class="form-control" id="gallery-search" placeholder="Ex: monan001" #search>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 bg-warning">
+                <div class="row justify-content-around align-items-center p-1">
+                    <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
+                        (click)="writefile()" /> -->
+                    <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
+                        (click)="readfile()" /> -->
+                    <!-- reference search -->
+                    <button type="button" class="btn btn-primary col-2 m-1" (click)="searchGallery(search.value)">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" />
+                    </button>
+                    <!-- TYPE 1: Sap xep theo ma -->
+                    <!-- TYPE 2: Sap xep theo gia -->
+                    <button type="button" class="btn btn-primary col-2 m-1">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort(1)" />
+                    </button>
+
+                    <button type="button" class="btn btn-primary col-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="sort" (click)="play()" />
                     </button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary col-2 m-1" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
                     </button>
@@ -60,7 +78,6 @@
 
         <div class="row m-auto justify-content-center">
             <div class="col-12" *ngIf="dishes.length">
-                <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
                 <div class="row">
                     <!--fields -->
                     <!-- ******************************** -->
@@ -70,14 +87,34 @@
                                 private _soLuong: number;
                                 private _url_image: string; -->
                     <!-- ******************************** -->
-                    <div class="col-12 col-sm-2 area-relative-remove m-1 p-1 rounded-1 text-white bg-success" *ngFor="let item of dishes">
-                        <img class="img-fluid thumbnail" [src]="item.url_image" [alt]="item.tenMonAn" />
-                        <p>{{item.tenMonAn | uppercase}}</p>
+                    <div class="col-12 col-sm-2 area-relative m-1 p-1 rounded-1 text-white bg-success"
+                        *ngFor="let item of dishes">
+                        <img class="img-fluid thumbnail text-center" [src]="item.url_image" [alt]="item.tenMonAn"
+                            (click)="getDetails(item)" />
+                        <p class="text-light">{{item.tenMonAn | uppercase}}</p>
                         <p class="text-end">{{item.donGia |currency}}</p>
-                        <button (click)="remove(item)"><img class="col-1 img-fluid btnIcon btnRemove"
-                                src="./assets/images/c-remove.png" alt="remove" /></button>
+                        <img (click)="remove(item)" class="col-1 img-fluid btnIcon btnRemove"
+                            src="./assets/images/c-remove.png" alt="remove" />
+                        <button type="button" (click)="getDetails(item)" class="btn btn-warning">view</button>
                     </div>
                 </div>
+                <ng-container class="row" *ngIf="dishes">
+                    <!--Thong tin mon an -->
+                    <!-- ******************************** -->
+                    <!--    thông tin chi tiết món ăn sau khi bấm nút view-->
+                    <!-- ******************************** -->
+                    <article class="area-relative" *ngIf="monAnDetail as item">
+                        <p class="h2 text-bg-info">{{item.tenMonAn | uppercase}}</p>
+                        <p class="card-subtitle text-bg-light">{{item.donGia | currency}}</p>
+                        <p class="text-warning text-bg-dark display-4"><b>SL:</b> {{item.soLuong | number}}</p>
+                    </article>
+
+                    <!-- Hinh gallery -->
+                    <!-- ******************************** -->
+                    <!-- dishes tồn tại thì mới lấy ra được để bấm play-->
+                    <!-- ******************************** -->
+                    <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
+                </ng-container>
             </div>
         </div>
     </div>

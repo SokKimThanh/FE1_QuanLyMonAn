@@ -48,7 +48,12 @@ img.btnIcon {
 /* drag and drop zone style */
 .dropzone {
     border: 2px dashed rgb(24, 23, 23);
+    padding: 8px;
+}
+
+.dropzone-flex {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -65,8 +70,9 @@ img.btnIcon {
 
 /** ----------------------------------*/
 /* Thêm nút xóa trên món ăn */
-.area-relative-remove {
+.area-relative {
     position: relative;
+    text-align: center;
 }
 
 .btnRemove {
@@ -74,5 +80,11 @@ img.btnIcon {
     right: 0;
     top: 0
 }
+
 /* Thêm nút xóa trên món ăn */
 /** ----------------------------------*/
+
+
+.text-link {
+    cursor: pointer;
+}

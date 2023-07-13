@@ -88,8 +88,9 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/thuvien/bootstrap.min.css",
               "src/assets/css/thuvien/all.min.css",
+              "src/assets/css/thuvien/fontawesome.min.css",
+              "src/assets/css/thuvien/bootstrap.min.css",
               "src/assets/css/custom/slideshow.css"
 
             ],

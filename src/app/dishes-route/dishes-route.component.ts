@@ -13,7 +13,7 @@
   * @filename dishes-route.component.ts
   * @content them 1 doi tuong vao danh sach, xoa 1 doi tuong khoi danh sach, hien thi, xoa hinh anh
   * */
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DanhSachMonAnService } from '../model/DanhSachMonAn';
 import { MonAn } from '../model/MonAn';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -32,6 +32,9 @@ export class DishesRouteComponent {
   dishes: MonAn[] = [];
   // clear interval slideshow
   intervalID: any;
+
+  // @Output() galleryMonAnParrentGeneric = new EventEmitter<MonAn>;
+  monAnDetail: MonAn = new MonAn();
   constructor(private modalService: NgbModal, private data: DanhSachMonAnService) {
     data = new DanhSachMonAnService();
     this.dishes = data.getMonAnList();
@@ -48,7 +51,7 @@ export class DishesRouteComponent {
   }
   play() {
     //reset data;
-    this.dishes = this.data.getMonAnList();
+    // this.dishes = this.data.getMonAnList();
     // khai bao
     let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
     let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
@@ -108,23 +111,39 @@ export class DishesRouteComponent {
      * @mota tự động chọn & chuyển ảnh ở vị trí kế tiếp
      * tạo thread mới(bất đồng bộ)
      */
-    this.intervalID = setInterval(chuyenHinh, 3000);
+    this.intervalID = setInterval(chuyenHinh, 1000);
   }
 
+  onFileSelected(event: any) {
+    this.data.onFileSelected(event);
+  }
+  /**
+   * 
+   * @param key Tu khoa tìm kiếm
+   * @returns danh sách tìm được
+   */
+  searchGallery(key: string) {
+    if (key == "") {
+      this.dishes = this.data.getMonAnList();
+    } else {
+      this.dishes = this.data.search(key);
+    }
+  }
   writefile() {
     alert("writefile");
   }
   readfile() {
     console.log("readfile");
   }
-  sort() {
-    console.log("sort");
+  /**
+   * 
+   * @param type 1: Theo mã, 2: Theo Đơn giá
+   */
+  sort(/* int */ type: number) {
+    // console.log("sort");
+    this.data.Sort(type);
+    this.dishes = this.data.getMonAnList();
   }
-
-  find() {
-    alert("find");
-  }
-
 
   /**
    * 
@@ -143,7 +162,9 @@ export class DishesRouteComponent {
       this.dishes = this.data.getMonAnList();
     }
   }
-
+  /**
+   * hàm thêm theo 2 dạng thêm vào đầu và thêm vào cuối danh sách
+   */
   add() {
     /* nhap thong tin mon an */
     let ma: MonAn = new MonAn();
@@ -167,7 +188,15 @@ export class DishesRouteComponent {
       this.dishes = this.data.getMonAnList();
     }
   }
-
+  /**
+   * 
+   * @param ma món ăn chi tiết
+   */
+  getDetails(ma: MonAn) {
+    // alert("get details")
+    this.monAnDetail = ma;
+    // this.galleryMonAnParrentGeneric.emit(ma);
+  }
   onDrop(ev: DragEvent) {
     ev.preventDefault();
     // alert("onDrop");

@@ -16,7 +16,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { MonAn } from "./MonAn";
 import { MyLinkedList } from "./MyLinkedList";
 import { MyNode } from "./MyNode";
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -25,7 +25,7 @@ export class DanhSachMonAnService {
     // fields
     private data: MyLinkedList;
     // constructor
-    constructor(private http: HttpClient) {
+    constructor() {
         this.data = new MyLinkedList();
     }
     //properties
@@ -68,7 +68,23 @@ export class DanhSachMonAnService {
     public getMonAnList(): MonAn[] {
         return this.data.Show();
     }
-
+    /**
+     * chức năng sắp xếp
+     */
+    public Sort(/* int */ type: number) {
+        switch (type) {
+            case 1: // theo ma
+                this.data.InterchangeSortMaMonAn();
+                break;
+            case 2: // theo don gia
+                this.data.InterchangeSortDonGia();
+                break;
+            case 3: // search theo ten
+                this.data.InterchangeSortTenMonAn();
+                break;
+            default: break;
+        }
+    }
     /**
      * @description Phương thức cho phép thả file vào ô chứa
      * @param ev DragEvent
@@ -147,26 +163,77 @@ export class DanhSachMonAnService {
         }
 
     }
+
     /**
-     * Đọc file
+     * 
+     * @param event Chua hoan thien
      */
-    public ReadFile(file_path: string) {
-        this.http.get(file_path, { responseType: 'text' }).subscribe(data => {
-            console.log(data);
-        });
+    onFileSelected(event: any) {
+        const file: File = event.target.files[0];
+        const formData: FormData = new FormData();
+        formData.append('image', file, file.name);
+        // this.onDrop(event);
     }
-    /**
-     * Ghi File
-     */
-    public WriteFile(file_path: string) {
-        let data = this.data.Show();
-        let sum: string = "";
-        for (let i = 0; i < data.length; i++) {
-            let ma: MonAn = data[i];
-            sum += ma.toFile();
+
+    // /**
+    //  * Đọc file
+    //  */
+    // public ReadFile(file_path: string) {
+    //     return this.http.get(file_path, { responseType: 'text' }).subscribe(data => {
+    //         console.log(data);
+    //     });
+    // }
+    // /**
+    //  * Ghi File
+    //  */
+    // public WriteFile(file_path: string) {
+    //     let data = this.data.Show();
+    //     let sum: string = "";
+    //     for (let i = 0; i < data.length; i++) {
+    //         let ma: MonAn = data[i];
+    //         sum += ma.toFile();
+    //     }
+    //     return this.http.post(file_path, sum, { responseType: 'text' }).subscribe(data => {
+    //         console.log(data);
+    //     });
+    // }
+
+    /** Need to be sorted list first before using this method */
+    binarySearchCity(arr: MonAn[], keySearch: string): MonAn[] {
+        // binary search
+        let /* int */ left: number = 0;
+        let /* int */ right: number = arr.length - 1;
+        let /* int */ mid: number = 0;
+        let results: MonAn[] = [];/* reset this result after n click search times */
+        // started searching...
+        while (left <= right) {
+            mid = Math.ceil((left + right) / 2);
+            let monan = arr[mid];
+            // so sanh bat ky
+            if (monan.tenMonAn.toLocaleLowerCase().includes(keySearch.toLocaleLowerCase())) {
+                results.push(monan);// tim tat ca ket qua
+                break;
+            } else if (monan.tenMonAn.toLocaleLowerCase().localeCompare(keySearch.toLocaleLowerCase()) < 0) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
         }
-        this.http.post(file_path, sum, { responseType: 'text' }).subscribe(data => {
-            console.log(data);
-        });
+        // return null if not found or success with as least one result;
+        return results;
+    }
+
+    search(searchText: string): MonAn[] {
+        if (!searchText) {
+            return [];
+        }
+        let result = this.getMonAnList();
+        result = result.filter(
+            (location: MonAn) => location.tenMonAn
+                .toLowerCase()
+                .includes(
+                    searchText.toLowerCase()
+                ));
+        return result;
     }
 }
