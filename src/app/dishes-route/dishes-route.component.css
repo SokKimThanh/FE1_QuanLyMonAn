@@ -21,7 +21,7 @@
 }
 
 .thumbnail {
-    opacity: 0.8;
+    opacity: 0.89;
     height: 100px;
 }
 
@@ -73,6 +73,25 @@ img.btnIcon {
 .area-relative {
     position: relative;
     text-align: center;
+}
+
+.area-box {
+    /* m-1 p-1 rounded-1 text-white bg-success */
+    margin: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    color: white;
+    background-color: rgb(29, 109, 29);
+}
+
+.area-wrap {
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.textwraps {
+    text-overflow: ;
+    overflow: auto;
 }
 
 .btnRemove {

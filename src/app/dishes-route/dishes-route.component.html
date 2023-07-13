@@ -55,20 +55,21 @@
                     <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
                         (click)="readfile()" /> -->
                     <!-- reference search -->
-                    <button type="button" class="btn btn-primary col-2 m-1" (click)="searchGallery(search.value)">
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1"
+                        (click)="searchGallery(search.value)">
                         <img class="img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" />
                     </button>
                     <!-- TYPE 1: Sap xep theo ma -->
                     <!-- TYPE 2: Sap xep theo gia -->
-                    <button type="button" class="btn btn-primary col-2 m-1">
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort(1)" />
                     </button>
 
-                    <button type="button" class="btn btn-primary col-2 m-1">
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="sort" (click)="play()" />
                     </button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary col-2 m-1" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
                     </button>
@@ -78,7 +79,7 @@
 
         <div class="row m-auto justify-content-center">
             <div class="col-12" *ngIf="dishes.length">
-                <div class="row">
+                <div class="row area-wrap">
                     <!--fields -->
                     <!-- ******************************** -->
                     <!--    private _maMonAn: string;
@@ -87,15 +88,19 @@
                                 private _soLuong: number;
                                 private _url_image: string; -->
                     <!-- ******************************** -->
-                    <div class="col-12 col-sm-2 area-relative m-1 p-1 rounded-1 text-white bg-success"
-                        *ngFor="let item of dishes">
-                        <img class="img-fluid thumbnail text-center" [src]="item.url_image" [alt]="item.tenMonAn"
-                            (click)="getDetails(item)" />
-                        <p class="text-light">{{item.tenMonAn | uppercase}}</p>
-                        <p class="text-end">{{item.donGia |currency}}</p>
-                        <img (click)="remove(item)" class="col-1 img-fluid btnIcon btnRemove"
-                            src="./assets/images/c-remove.png" alt="remove" />
-                        <button type="button" (click)="getDetails(item)" class="btn btn-warning">view</button>
+                    <div *ngFor="let item of dishes" class="col-12 col-sm-4">
+                        <div class="area-relative area-box">
+                            <img class="img-fluid thumbnail text-center" [src]="item.url_image" [alt]="item.tenMonAn"
+                                (click)="getDetails(item)" />
+                            <p class="text-light">{{item.tenMonAn | uppercase}}</p>
+                            <p class="text-end">{{item.donGia |currency}}</p>
+                            <button type="button" (click)="getDetails(item)" class="btn btn-warning col-2 m-1">
+                                <img class="img-fluid" src="./assets/images/c-view.png" alt="remove" />
+                            </button>
+                            <button type="button" (click)="getDetails(item)" class="btn btn-warning col-2 m-1">
+                                <img class="img-fluid" src="./assets/images/c-remove.png" alt="remove" />
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <ng-container class="row" *ngIf="dishes">
@@ -104,9 +109,9 @@
                     <!--    thông tin chi tiết món ăn sau khi bấm nút view-->
                     <!-- ******************************** -->
                     <article class="area-relative" *ngIf="monAnDetail as item">
-                        <p class="h2 text-bg-info">{{item.tenMonAn | uppercase}}</p>
-                        <p class="card-subtitle text-bg-light">{{item.donGia | currency}}</p>
-                        <p class="text-warning text-bg-dark display-4"><b>SL:</b> {{item.soLuong | number}}</p>
+                        <p class="h2 text-bg-info p-4">{{item.tenMonAn | uppercase}}</p>
+                        <p class="h4 text-danger fw-bold text-bg-light p-3">{{item.donGia | currency}}</p>
+                        <p class="h4 text-warning text-bg-dark p-3"><b>SL:</b> {{item.soLuong | number}}</p>
                     </article>
 
                     <!-- Hinh gallery -->

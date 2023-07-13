@@ -39,16 +39,25 @@ export class DishesRouteComponent {
     data = new DanhSachMonAnService();
     this.dishes = data.getMonAnList();
   }
+  /**
+   * Khởi tạo mảng sau khi render hook angular
+   */
+  ngAfterContentInit() {
+    this.data.Add(1, new MonAn('Monan001', 'khoai tay chien', 15000, 100, '../../assets/images/logo.png'));
+    this.dishes = this.data.getMonAnList();
+  }
+  /**
+   * Test đóng modal
+   */
   closeModal() {
     let close_button = document.getElementById('close_button');
     close_button?.addEventListener('click', function () {
       console.log("close modal");
     })
   }
-  ngAfterContentInit() {
-    this.data.Add(1, new MonAn('Monan001', 'khoai tay chien', 15000, 100, '../../assets/images/logo.png'));
-    this.dishes = this.data.getMonAnList();
-  }
+  /**
+   * Hàm chạy tự động slideshow
+   */
   play() {
     //reset data;
     // this.dishes = this.data.getMonAnList();
@@ -129,12 +138,14 @@ export class DishesRouteComponent {
       this.dishes = this.data.search(key);
     }
   }
+  
   writefile() {
     alert("writefile");
   }
   readfile() {
     console.log("readfile");
   }
+
   /**
    * 
    * @param type 1: Theo mã, 2: Theo Đơn giá
@@ -162,6 +173,7 @@ export class DishesRouteComponent {
       this.dishes = this.data.getMonAnList();
     }
   }
+
   /**
    * hàm thêm theo 2 dạng thêm vào đầu và thêm vào cuối danh sách
    */
