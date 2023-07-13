@@ -19,11 +19,7 @@ html {
 .navbar-brand {
   color: white !important;
 }
-
-/* co dinh chieu cao */
-.img-responsive {
-  height: 50px;
-}
+ 
 
 /* to mau tim */
 .navbar-light {

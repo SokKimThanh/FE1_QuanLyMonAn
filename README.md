@@ -1,5 +1,11 @@
 # QuanLyMonAn
 
+## Cập nhật 14/07/2023
+
+- Cập nhật hình item không rớt dòng
+- Cập nhật logo vừa vặn kích thước
+![Alt text](./src/assets/images/capnhatlogo.png)
+
 ## Cập nhật 13/07/2023
 
 - Thực hiện chức năng xóa 1 món ăn ra khỏi danh sách
