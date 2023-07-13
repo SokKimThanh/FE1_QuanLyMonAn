@@ -6,7 +6,7 @@
 - Thực hiện chức năng sắp xếp
 - Thực hiện chức năng load hình mặc định
 - Thực hiện chức năng đọc ghi file - failed
-- Thực hiện chức năng sắp xếp
+- Thực hiện chức năng tìm kiếm
 ![Alt text](./src/assets/images/chucnangsapxep.png)
 
 ## Cập nhật 12/07/2023
