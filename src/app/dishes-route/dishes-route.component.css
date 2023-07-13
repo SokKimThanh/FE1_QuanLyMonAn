@@ -25,6 +25,10 @@
     height: 100px;
 }
 
+.thumbnail:hover {
+    cursor: pointer;
+}
+
 .active {
     opacity: 1;
     border: 2px solid red;
@@ -84,9 +88,20 @@ img.btnIcon {
     background-color: rgb(29, 109, 29);
 }
 
+.area-box:hover {
+    margin: 8px;
+    transition: .2s;
+}
+
 .area-wrap {
     flex-wrap: nowrap;
     overflow: auto;
+}
+
+.area-box-animation {
+    margin-top: 4px;
+    z-index: 2;
+    position: relative;
 }
 
 .textwraps {

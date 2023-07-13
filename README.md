@@ -5,6 +5,7 @@
 - Cập nhật hình item không rớt dòng
 - Cập nhật logo vừa vặn kích thước
 ![Alt text](./src/assets/images/capnhatlogo.png)
+- cập nhật animation
 
 ## Cập nhật 13/07/2023
 
