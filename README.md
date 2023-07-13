@@ -1,6 +1,14 @@
 # QuanLyMonAn
 
+## Cập nhật 13/07/2023
+
+- Thực hiện chức năng xóa 1 món ăn ra khỏi danh sách
+- Thực hiện chức năng sắp xếp
+- Thực hiện chức năng load hình mặc định
+- Thực hiện chức năng đọc ghi file
+
 ## Cập nhật 12/07/2023
+
 - Thực hiện chức năng thêm 1 hình ảnh vào slide show
 - Thêm nút chạy slide show
 - Thực hiện chức năng chạy slide show

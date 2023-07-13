@@ -43,7 +43,8 @@ export class DishesRouteComponent {
     })
   }
   ngAfterContentInit() {
-
+    this.data.Add(1, new MonAn('Monan001', 'khoai tay chien', 15000, 100, '../../assets/images/logo.png'));
+    this.dishes = this.data.getMonAnList();
   }
   play() {
     //reset data;
@@ -138,7 +139,7 @@ export class DishesRouteComponent {
     // xoa trong danh sach
     if (confirm == true) {
       this.data.Remove(new MyNode(monan));
-      console.log(this.data.Data.size);
+      // Test size: console.log(this.data.Data.size);
       this.dishes = this.data.getMonAnList();
     }
   }
@@ -157,7 +158,7 @@ export class DishesRouteComponent {
      * 2. Add First
      */
     let check: MyNode = this.data.Add(1, ma);
-    console.log(this.data.Data.size)
+    // Test size: console.log(this.data.Data.size)
     // Kiem tra them thanh cong
     if (check != null) {
       // add  thanh cong thi tat modal

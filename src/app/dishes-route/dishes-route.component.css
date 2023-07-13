@@ -63,14 +63,16 @@ img.btnIcon {
     border: 1px solid black;
 }
 
-
-.article-group-remove {
+/** ----------------------------------*/
+/* Thêm nút xóa trên món ăn */
+.area-relative-remove {
     position: relative;
 }
 
 .btnRemove {
     position: absolute;
     right: 0;
-    margin-right: 12px;
     top: 0
 }
+/* Thêm nút xóa trên món ăn */
+/** ----------------------------------*/

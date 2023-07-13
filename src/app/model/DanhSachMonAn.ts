@@ -6,6 +6,9 @@
  * ---------------------------------------------------------------------------------------
  * @updateDate 05/07/2023
  * @updateContent Cập nhật phương thức xóa, sửa, kéo thả, đọc ghi file, tìm kiếm, sắp xếp
+ * ---------------------------------------------------------------------------------------
+ * @updateDate 13/07/2023
+ * @updateContent Thực hiện chức năng ghi file
  */
 
 
@@ -13,6 +16,8 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { MonAn } from "./MonAn";
 import { MyLinkedList } from "./MyLinkedList";
 import { MyNode } from "./MyNode";
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
     providedIn: 'root',
 })
@@ -20,7 +25,7 @@ export class DanhSachMonAnService {
     // fields
     private data: MyLinkedList;
     // constructor
-    constructor() {
+    constructor(private http: HttpClient) {
         this.data = new MyLinkedList();
     }
     //properties
@@ -146,16 +151,22 @@ export class DanhSachMonAnService {
      * Đọc file
      */
     public ReadFile(file_path: string) {
-        const rsbr: ReadableStream = new ReadableStream();
-        const reader: ReadableStreamDefaultReader = rsbr.getReader();
-
-        reader.read().then(({ done, value }) => {
-            if (done) {
-                console.log('End of stream');
-                return;
-            }
-
-            console.log(`Received ${value}`);
+        this.http.get(file_path, { responseType: 'text' }).subscribe(data => {
+            console.log(data);
+        });
+    }
+    /**
+     * Ghi File
+     */
+    public WriteFile(file_path: string) {
+        let data = this.data.Show();
+        let sum: string = "";
+        for (let i = 0; i < data.length; i++) {
+            let ma: MonAn = data[i];
+            sum += ma.toFile();
+        }
+        this.http.post(file_path, sum, { responseType: 'text' }).subscribe(data => {
+            console.log(data);
         });
     }
 }

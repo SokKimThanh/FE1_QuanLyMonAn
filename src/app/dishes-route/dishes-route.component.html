@@ -70,11 +70,11 @@
                                 private _soLuong: number;
                                 private _url_image: string; -->
                     <!-- ******************************** -->
-                    <div class="col-12 col-sm-3 article-group-remove m-1 p-1 text-white bg-success" *ngFor="let item of dishes">
+                    <div class="col-12 col-sm-2 area-relative-remove m-1 p-1 rounded-1 text-white bg-success" *ngFor="let item of dishes">
                         <img class="img-fluid thumbnail" [src]="item.url_image" [alt]="item.tenMonAn" />
                         <p>{{item.tenMonAn | uppercase}}</p>
                         <p class="text-end">{{item.donGia |currency}}</p>
-                        <button (click)="remove(item)"><img class="col-3 img-fluid btnIcon btnRemove"
+                        <button (click)="remove(item)"><img class="col-1 img-fluid btnIcon btnRemove"
                                 src="./assets/images/c-remove.png" alt="remove" /></button>
                     </div>
                 </div>
