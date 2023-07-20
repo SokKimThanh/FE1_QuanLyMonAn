@@ -12,32 +12,38 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!-- Tieu de: modal -->
+                        <!-- --------------------------- Tieu de: modal ---------------------------- -->
                         <h5 class="modal-title" id="staticBackdropLabel">Add File</h5>
-                        <!-- nut x: thoat -->
+                        <!-- ---------------------------- nut x: thoat ----------------------------- -->
                         <button id="close_button" type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
-                    <!-- ----------------- -->
-                    <!-- KEO THA HINH ANH! -->
-                    <!-- ----------------- -->
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                            KEO THA HINH ANH!                            -->
+                    <!-- ----------------------------------------------------------------------- -->
                     <div class="modal-body">
                         <!-- noi dung: modal -->
                         <!-- keo tha hinh -->
                         <!-- KHU VỰC DROPZONE KÉO THẢ HÌNH -->
-                        <!-- **************************************************************** -->
-                        <!--                           DROPZONE                               -->
-                        <!-- **************************************************************** -->
+                        <!-- ----------------------------------------------------------------------- -->
+                        <!--                 hidden input file showing image selector                 -->
+                        <!-- ----------------------------------------------------------------------- -->
                         <input type="file" id="image-selector" hidden>
+                        <!-- *********************************************************************** -->
+                        <!--                               DROPZONE                                  -->
+                        <!-- *********************************************************************** -->
                         <div id="dropzone" class="dropzone dropzone-flex" (dragover)="onDragOver($event)"
                             (drop)="onDrop($event)">
-                            <!-- hidden input file -->
-                            <!-- showing image choosen -->
-                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop"
-                                class="img-fluid" draggable="true" (dragstart)="onDragStart($event)"
-                                (click)="clickImage()">
+                            <!-- ----------------------------------------------------------------------- -->
+                            <!--                                dragImage                                -->
+                            <!-- ----------------------------------------------------------------------- -->
+                            <img id="dragImage" [src]="defaultImageSelector" alt="dragAndDrop" class="img-fluid"
+                                draggable="true" (dragstart)="onDragStart($event)" (click)="clickImageSelector()">
                         </div>
                     </div>
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                         nut them / thoat modal                          -->
+                    <!-- ----------------------------------------------------------------------- -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" (click)="add()">Add</button>
@@ -55,7 +61,7 @@
                     <div class="col-sm-10">
                         <label class="form-label" for="gallery-search">Search Gallery</label>
                         <!-- ----------------------------------------------------------------------- -->
-                        <!--                          two way data binding                           -->
+                        <!--                       search two way data binding                       -->
                         <!-- ----------------------------------------------------------------------- -->
                         <!-- reference search -->
                         <!-- Nút tìm kiếm tich hop vào input two-way data binding ngModel-->
@@ -91,10 +97,10 @@
                         <img class="img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort(1)" />
                     </button>
                     <!-- ----------------------------------------------------------------------- -->
-                    <!--                              nút thêm mới                               -->
+                    <!--                         nút thêm mới Open modal                         -->
                     <!-- ----------------------------------------------------------------------- -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
+                        data-bs-target="#staticBackdrop" (click)="onResetDragImage()">
                         <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
                     </button>
                 </div>

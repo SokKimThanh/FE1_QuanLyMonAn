@@ -222,15 +222,15 @@ export class DanhSachMonAnService {
     }
     /**
      * 
-     * @param id Hàm bắt sự kiện thay đổi file khi add file hình
+     * @param idInputSelector Hàm bắt sự kiện thay đổi file khi add file hình
      */
-    clickChangeImageEvent(id: string) {
+    clickChangeImageSelectorEvent(idInputSelector: string, idDragImage:string) {
         // selector input upload
-        let inputUpload = document.getElementById(id)! as HTMLInputElement;
+        let inputUpload = document.getElementById(idInputSelector)! as HTMLInputElement;
         inputUpload.addEventListener('change', function () {
             var url = inputUpload.value;
             var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-            let dragImage = document.getElementById('dragImage');
+            let dragImage = document.getElementById(idDragImage);
             if (inputUpload.files && inputUpload.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
                 var reader = new FileReader();
 
@@ -238,10 +238,9 @@ export class DanhSachMonAnService {
                     let result: any = e.target?.result;
                     dragImage!.setAttribute('src', result);
                 }
-
                 reader.readAsDataURL(inputUpload.files[0]);
             } else {
-                dragImage!.setAttribute('src', '/assets/no_preview.png');
+                dragImage!.setAttribute('src', '../../assets/images/c-dragEvent.png');
             }
         })
     }
