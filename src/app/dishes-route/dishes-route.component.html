@@ -59,7 +59,9 @@
                         <!--                          two way data binding                           -->
                         <!-- ----------------------------------------------------------------------- -->
                         <!-- reference search -->
-                        <input class="form-control" id="gallery-search" placeholder="Ex: monan001" [(ngModel)]="gallerySearch" (change)="searchGallery(gallerySearch)">
+                        <!-- Nút tìm kiếm tich hop vào input two-way data binding ngModel-->
+                        <input class="form-control" id="gallery-search" placeholder="Ex: monan001"
+                            [(ngModel)]="gallerySearch" (change)="searchGallery(gallerySearch)">
                     </div>
                     <!-- <button type="button" class="btn btn-primary col-sm-2" (click)="searchGallery(search.value)">
                         <img class="img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" />
@@ -67,24 +69,26 @@
                 </div>
             </div>
             <div class="col-6 bg-warning">
+                <!-- ----------------------------------------------------------------------- -->
+                <!--                      Các nút điều khiển slideshow                       -->
+                <!-- ----------------------------------------------------------------------- -->
                 <!-- các nút điều khiển ở đây -->
-                <!-- **************************************************************** -->
-                <!--                   Các nút điều khiển slideshow                   -->
-                <!-- **************************************************************** -->
-                <div class="row justify-content-around align-items-center p-1">
-                    <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
-                        (click)="writefile()" /> -->
-                    <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
-                        (click)="readfile()" /> -->
-                    <!-- Nút tìm kiếm-->
-
-                    <!-- Nút sắp xếp -->
+                <div class="row justify-content-end align-items-center p-1">
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
+                        (click)="writefile()" />
+                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
+                        (click)="readfile()" />
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                               Nút sắp xếp                               -->
+                    <!-- ----------------------------------------------------------------------- -->
                     <!-- TYPE 1: Sap xep theo ma -->
                     <!-- TYPE 2: Sap xep theo gia -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort(1)" />
                     </button>
-                    <!-- nút thêm mới -->
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                              nút thêm mới                               -->
+                    <!-- ----------------------------------------------------------------------- -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         <img class="img-fluid btnIcon" src="./assets/images/c-add.png" alt="add" />
@@ -92,6 +96,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Thông tin card slideshow nằm ở đây -->
         <!-- **************************************************************** -->
         <!--                   Thông tin card slideshow                       -->
@@ -133,9 +138,12 @@
                 <ng-container class="row" *ngIf="monAnDetail">
                     <!-- Thong tin mon an -->
                     <article class="area-relative" *ngIf="monAnDetail as item">
-                        <p class="h2 text-bg-info p-4">{{item.tenMonAn | uppercase}}</p>
-                        <p class="h4 text-danger fw-bold text-bg-light p-3">{{item.donGia | currency}}</p>
-                        <p class="h4 text-warning text-bg-dark p-3"><b>SL:</b> {{item.soLuong | number}}</p>
+                        <p class="h2 fw-bold text-bg-light p-4">{{item.tenMonAn | uppercase}}<span
+                                class="h4  p-3">{{item.donGia | currency}}</span>
+                            <span class="h4 p-3"><b>SL:</b> {{item.soLuong | number}}</span>
+                        </p>
+
+
                     </article>
 
                     <!-- ----------------------------------------------------------------------- -->
@@ -145,15 +153,28 @@
 
                     <img class="col-12 img-fluid main-photo" [src]="monAnDetail.url_image"
                         [alt]="monAnDetail.tenMonAn" />
-                    <!-- nút play -->
-                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
-                        <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="play" (click)="play()" />
-                    </button>
-                    <!-- nut stop -->
-                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
-                        <img class="img-fluid btnIcon" src="./assets/images/c-stop.png" alt="stop" (click)="stop()" />
-                    </button>
+
                 </ng-container>
+            </div>
+            <!-- ----------------------------------------------------------------------- -->
+            <!--                              nút play/stop                              -->
+            <!-- ----------------------------------------------------------------------- -->
+            <div class="row">
+                <div class="col-6 bg-warning"></div>
+                <div class="col-6 bg-warning">
+                    <div class="row justify-content-end align-items-center p-1">
+                        <!-- nut stop -->
+                        <button type="button" class="btn btn-primary col-2 col-sm-2 m-1">
+                            <img class="img-fluid btnIcon" src="./assets/images/c-stop.png" alt="stop"
+                                (click)="stop()" />
+                        </button>
+                        <!-- nut start -->
+                        <button type="button" class="btn btn-primary col-2 col-sm-2 m-1">
+                            <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="play"
+                                (click)="play()" />
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
