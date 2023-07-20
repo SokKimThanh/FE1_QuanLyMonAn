@@ -232,7 +232,7 @@ export class DishesRouteComponent {
      * 1. Add Last
      * 2. Add First
      */
-    let check: MyNode = this.data.Add(1, ma);
+    let check: MyNode = this.data.Add(2, ma);
     // Test size: console.log(this.data.Data.size)
     // Kiem tra them thanh cong
     if (check != null) {
