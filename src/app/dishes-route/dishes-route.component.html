@@ -28,7 +28,7 @@
                         <!-- **************************************************************** -->
                         <!--                           DROPZONE                               -->
                         <!-- **************************************************************** -->
-                        <input type="file" id="inputUpload" hidden>
+                        <input type="file" id="image-selector" hidden>
                         <div id="dropzone" class="dropzone dropzone-flex" (dragover)="onDragOver($event)"
                             (drop)="onDrop($event)">
                             <!-- hidden input file -->
@@ -73,16 +73,15 @@
                 <!-- ----------------------------------------------------------------------- -->
                 <!-- các nút điều khiển ở đây -->
                 <div class="row justify-content-end align-items-center p-1">
-                    <!-- ----------------------------------------------------------------------- -->
+                    <!-- *********************************************************************** -->
                     <!--                           doc file / ghi file                           -->
-                    <!-- ----------------------------------------------------------------------- -->
+                    <!-- *********************************************************************** -->
                     <input type="file" id="file-selector" style="display: none;">
-
                     <!-- addEventListener sẽ bắt sự kiện click và change ở hook init  -->
-                    <button class="btn btn-primary col-2 " (click)="readfile()"> <img class="img-fluid btnIcon"
+                    <!-- <button class="btn btn-primary col-2 " (click)="readfile()"> <img class="img-fluid btnIcon"
                             src="./assets/images/c-read.png" alt="readfile" /></button>
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
-                        (click)="writefile()" />
+                        (click)="writefile()" /> -->
                     <!-- ----------------------------------------------------------------------- -->
                     <!--                               Nút sắp xếp                               -->
                     <!-- ----------------------------------------------------------------------- -->

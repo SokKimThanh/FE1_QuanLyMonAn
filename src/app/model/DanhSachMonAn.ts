@@ -163,7 +163,7 @@ export class DanhSachMonAnService {
         }
 
     }
- 
+
 
     /** Need to be sorted list first before using this method */
     binarySearchCity(arr: MonAn[], keySearch: string): MonAn[] {
@@ -202,5 +202,47 @@ export class DanhSachMonAnService {
                     searchText.toLowerCase()
                 ));
         return result;
+    }
+
+    /**
+     * 
+     * @param id Nap thong tin mon an tu may tinh local
+     */
+    readFileEvent(id: string) {
+        let fileSelector = document.getElementById(id) as HTMLInputElement;
+        // Upload the file selected by the input when upload button is pressed
+        fileSelector.addEventListener('click', () => {
+            console.log('clicked input selector');
+            // console.log('uploading: ', upload_input.files[0])
+        })
+        fileSelector?.addEventListener('change', (event) => {
+            const fileList = event.target as HTMLInputElement;
+            console.log(fileList?.files![0]);
+        });
+    }
+    /**
+     * 
+     * @param id Hàm bắt sự kiện thay đổi file khi add file hình
+     */
+    clickChangeImageEvent(id: string) {
+        // selector input upload
+        let inputUpload = document.getElementById(id)! as HTMLInputElement;
+        inputUpload.addEventListener('change', function () {
+            var url = inputUpload.value;
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            let dragImage = document.getElementById('dragImage');
+            if (inputUpload.files && inputUpload.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    let result: any = e.target?.result;
+                    dragImage!.setAttribute('src', result);
+                }
+
+                reader.readAsDataURL(inputUpload.files[0]);
+            } else {
+                dragImage!.setAttribute('src', '/assets/no_preview.png');
+            }
+        })
     }
 }
