@@ -50,6 +50,12 @@ export class DishesRouteComponent {
   ngAfterContentInit() {
     this.data.Add(1, new MonAn('Monan001', 'khoai tay chien', 15000, 100, '../../assets/images/logo.png'));
     this.dishes = this.data.getMonAnList();
+
+    /* ---------- phat hien su thay doi thi se co su kien apply mon an ---------- */
+    this.readFileEvent();
+    /* ---------- phat hien su thay doi thi se co su kien change hình mới ---------- */
+    this.clickChangeImageEvent();
+
   }
 
   /* --------------------------------- method --------------------------------- */
@@ -148,17 +154,35 @@ export class DishesRouteComponent {
       dragImage!.setAttribute('src', '/assets/no_preview.png');
     }
   }
-
-  /* thêm hình vào khung hình */
-  public onFileSelected() {
-    // selector input upload
-    let inputUpload = document.getElementById('inputUpload')!;
-    this.readURL(inputUpload);
-  }
+  /**
+   * Hàm chọn selector input file image khi add file hình
+   */
   clickImage() {
     // alert("clicked image");
     let inputUpload = document.getElementById('inputUpload')!;
     inputUpload.click();
+  }
+  /* Hàm bắt sự kiện thay đổi file khi add file hình */
+  clickChangeImageEvent() {
+    // selector input upload
+    let inputUpload = document.getElementById('inputUpload')! as HTMLInputElement;
+    inputUpload.addEventListener('change', function () {
+      var url = inputUpload.value;
+      var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+      let dragImage = document.getElementById('dragImage');
+      if (inputUpload.files && inputUpload.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          let result: any = e.target?.result;
+          dragImage!.setAttribute('src', result);
+        }
+
+        reader.readAsDataURL(inputUpload.files[0]);
+      } else {
+        dragImage!.setAttribute('src', '/assets/no_preview.png');
+      }
+    })
   }
   /**
    * 
@@ -178,9 +202,26 @@ export class DishesRouteComponent {
     alert("writefile");
   }
   readfile() {
-    console.log("readfile");
+    // console.log("readfile");
+    /* thong tin file đã lưu danh sách món ăn */
+    let fileSelector = document.getElementById('file-selector') as HTMLInputElement;
+    fileSelector.click();
   }
-
+  /**
+   * Nap thong tin mon an tu may tinh local
+   */
+  readFileEvent() {
+    let fileSelector = document.getElementById('file-selector') as HTMLInputElement;
+    // Upload the file selected by the input when upload button is pressed
+    fileSelector.addEventListener('click', () => {
+      console.log('clicked input selector');
+      // console.log('uploading: ', upload_input.files[0])
+    })
+    fileSelector?.addEventListener('change', (event) => {
+      const fileList = event.target as HTMLInputElement;
+      console.log(fileList?.files![0]);
+    });
+  }
   /**
    * 
    * @param type 1: Theo mã, 2: Theo Đơn giá

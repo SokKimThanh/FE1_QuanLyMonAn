@@ -163,32 +163,7 @@ export class DanhSachMonAnService {
         }
 
     }
-
-     
-
-    // /**
-    //  * Đọc file
-    //  */
-    // public ReadFile(file_path: string) {
-    //     return this.http.get(file_path, { responseType: 'text' }).subscribe(data => {
-    //         console.log(data);
-    //     });
-    // }
-    
-    // /**
-    //  * Ghi File
-    //  */
-    // public WriteFile(file_path: string) {
-    //     let data = this.data.Show();
-    //     let sum: string = "";
-    //     for (let i = 0; i < data.length; i++) {
-    //         let ma: MonAn = data[i];
-    //         sum += ma.toFile();
-    //     }
-    //     return this.http.post(file_path, sum, { responseType: 'text' }).subscribe(data => {
-    //         console.log(data);
-    //     });
-    // }
+ 
 
     /** Need to be sorted list first before using this method */
     binarySearchCity(arr: MonAn[], keySearch: string): MonAn[] {

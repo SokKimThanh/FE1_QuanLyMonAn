@@ -40,7 +40,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" (click)="onFileSelected()">Refresh</button>
                         <button type="button" class="btn btn-primary" (click)="add()">Add</button>
                     </div>
                 </div>
@@ -74,10 +73,16 @@
                 <!-- ----------------------------------------------------------------------- -->
                 <!-- các nút điều khiển ở đây -->
                 <div class="row justify-content-end align-items-center p-1">
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                           doc file / ghi file                           -->
+                    <!-- ----------------------------------------------------------------------- -->
+                    <input type="file" id="file-selector" style="display: none;">
+
+                    <!-- addEventListener sẽ bắt sự kiện click và change ở hook init  -->
+                    <button class="btn btn-primary col-2 " (click)="readfile()"> <img class="img-fluid btnIcon"
+                            src="./assets/images/c-read.png" alt="readfile" /></button>
                     <img class="col-2 img-fluid btnIcon" src="./assets/images/c-write.png" alt="writefile"
                         (click)="writefile()" />
-                    <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
-                        (click)="readfile()" />
                     <!-- ----------------------------------------------------------------------- -->
                     <!--                               Nút sắp xếp                               -->
                     <!-- ----------------------------------------------------------------------- -->
