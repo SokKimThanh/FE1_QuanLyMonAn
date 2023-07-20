@@ -6,6 +6,7 @@
 - Thêm nút dừng slideshow
 - ![Alt text](chucnang-refresh-chonhinh.png)
 - ![Alt text](chucnang-start-stop-slideshow.png)
+- xoa component housing list
 
 ## Cập nhật 14/07/2023
 
