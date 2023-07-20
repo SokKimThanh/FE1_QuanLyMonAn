@@ -100,7 +100,7 @@ export class MonAn {
         return `${this.maMonAn, -15}${this.tenMonAn, -15}${this.soLuong, -15}${this.donGia, -15}${this.url_image}`;
     }
     // write to File
-    public toFile():string{
+    public toFile(): string {
         return `${this.maMonAn}#${this.tenMonAn}#${this.soLuong}#${this.donGia}#${this.url_image}`
     }
 }

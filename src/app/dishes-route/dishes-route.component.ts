@@ -26,6 +26,7 @@ import { MyNode } from '../model/MyNode';
 })
 
 export class DishesRouteComponent {
+  /* -------------------------------- khai bao -------------------------------- */
   // tieu de 
   title = 'appBootstrap';
   /* danh sach mon an */
@@ -35,9 +36,12 @@ export class DishesRouteComponent {
 
   // @Output() galleryMonAnParrentGeneric = new EventEmitter<MonAn>;
   monAnDetail: MonAn = new MonAn();
+
+  /* ------------------------------- constructor ------------------------------ */
   constructor(private modalService: NgbModal, private data: DanhSachMonAnService) {
     data = new DanhSachMonAnService();
     this.dishes = data.getMonAnList();
+
   }
   /**
    * Khởi tạo mảng sau khi render hook angular
@@ -46,14 +50,14 @@ export class DishesRouteComponent {
     this.data.Add(1, new MonAn('Monan001', 'khoai tay chien', 15000, 100, '../../assets/images/logo.png'));
     this.dishes = this.data.getMonAnList();
   }
+
+  /* --------------------------------- method --------------------------------- */
   /**
    * Test đóng modal
    */
   closeModal() {
     let close_button = document.getElementById('close_button');
-    close_button?.addEventListener('click', function () {
-      console.log("close modal");
-    })
+    close_button?.click();
   }
   /**
    * Hàm chạy tự động slideshow
@@ -122,9 +126,28 @@ export class DishesRouteComponent {
      */
     this.intervalID = setInterval(chuyenHinh, 1000);
   }
+  public readURL(input: any) {
+    var url = input.value;
+    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+    let dragImage = document.getElementById('dragImage');
+    if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+      var reader = new FileReader();
 
-  onFileSelected(event: any) {
-    this.data.onFileSelected(event);
+      reader.onload = function (e) {
+        let result: any = e.target?.result;
+        dragImage!.setAttribute('src', result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      dragImage!.setAttribute('src', '/assets/no_preview.png');
+    }
+  }
+  /* thêm hình vào khung hình */
+  onFileSelected() {
+    // selector input upload
+    let inputUpload = document.getElementById('inputUpload')!;
+    this.readURL(inputUpload);
   }
   /**
    * 
@@ -138,7 +161,7 @@ export class DishesRouteComponent {
       this.dishes = this.data.search(key);
     }
   }
-  
+
   writefile() {
     alert("writefile");
   }
@@ -194,7 +217,7 @@ export class DishesRouteComponent {
     // Test size: console.log(this.data.Data.size)
     // Kiem tra them thanh cong
     if (check != null) {
-      // add  thanh cong thi tat modal
+      // add thanh cong thi tat modal
       this.closeModal();
       //refresh danh sach hinh nho
       this.dishes = this.data.getMonAnList();

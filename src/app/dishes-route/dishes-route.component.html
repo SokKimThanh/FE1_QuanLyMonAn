@@ -28,15 +28,18 @@
                         <!-- **************************************************************** -->
                         <!--                           DROPZONE                               -->
                         <!-- **************************************************************** -->
+                        <input type="file" id="inputUpload">
                         <div id="dropzone" class="dropzone dropzone-flex" (dragover)="onDragOver($event)"
                             (drop)="onDrop($event)">
-                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop"
+                            <!-- hidden input file -->
+                            <!-- showing image choosen -->
+                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop" class="img-fluid"
                                 draggable="true" (dragstart)="onDragStart($event)">
-                            <!-- <input type="file" (change)="onFileSelected($event)"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="onFileSelected()">Refresh</button>
                         <button type="button" class="btn btn-primary" (click)="add()">Add</button>
                     </div>
                 </div>
@@ -95,15 +98,20 @@
         <!-- **************************************************************** -->
         <div class="row m-auto justify-content-center">
             <div class="col-12" *ngIf="dishes.length">
+                <!-- ----------------------------------------------------------------------- -->
+                <!--                   khu vuc wrap khong nhay xuong hang                    -->
+                <!-- ----------------------------------------------------------------------- -->
                 <div class="row area-wrap">
-                    <!--fields -->
-                    <!-- ******************************** -->
-                    <!--    private _maMonAn: string;
-                                private _tenMonAn: string;
-                                private _donGia: number;
-                                private _soLuong: number;
-                                private _url_image: string; -->
-                    <!-- ******************************** -->
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--                fields: cac fields one_way data binding                 -->
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!-- **************************************************************** -->
+                    <!--private _maMonAn: string;
+                        private _tenMonAn: string;
+                        private _donGia: number;
+                        private _soLuong: number;
+                        private _url_image: string; -->
+                    <!-- **************************************************************** -->
                     <div *ngFor="let item of dishes" class="col-12 col-sm-4">
                         <div class="area-relative area-box area-box-animation">
                             <img class="img-fluid thumbnail text-center" [src]="item.url_image" [alt]="item.tenMonAn"
@@ -119,21 +127,21 @@
                         </div>
                     </div>
                 </div>
+                <!-- **************************************************************** -->
+                <!--      thông tin chi tiết món ăn sau khi bấm nút view              -->
+                <!-- **************************************************************** -->
                 <ng-container class="row" *ngIf="dishes">
                     <!-- Thong tin mon an -->
-                    <!-- **************************************************************** -->
-                    <!--      thông tin chi tiết món ăn sau khi bấm nút view              -->
-                    <!-- **************************************************************** -->
                     <article class="area-relative" *ngIf="monAnDetail as item">
                         <p class="h2 text-bg-info p-4">{{item.tenMonAn | uppercase}}</p>
                         <p class="h4 text-danger fw-bold text-bg-light p-3">{{item.donGia | currency}}</p>
                         <p class="h4 text-warning text-bg-dark p-3"><b>SL:</b> {{item.soLuong | number}}</p>
                     </article>
 
+                    <!-- ----------------------------------------------------------------------- -->
+                    <!--             dishes tồn tại thì mới lấy ra được để bấm play              -->
+                    <!-- ----------------------------------------------------------------------- -->
                     <!-- Hinh gallery -->
-                    <!-- *********************************************************** -->
-                    <!-- dishes tồn tại thì mới lấy ra được để bấm play-->
-                    <!-- *********************************************************** -->
                     <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
                 </ng-container>
             </div>

@@ -164,16 +164,7 @@ export class DanhSachMonAnService {
 
     }
 
-    /**
-     * 
-     * @param event Chua hoan thien
-     */
-    onFileSelected(event: any) {
-        const file: File = event.target.files[0];
-        const formData: FormData = new FormData();
-        formData.append('image', file, file.name);
-        // this.onDrop(event);
-    }
+     
 
     // /**
     //  * Đọc file
@@ -183,6 +174,7 @@ export class DanhSachMonAnService {
     //         console.log(data);
     //     });
     // }
+    
     // /**
     //  * Ghi File
     //  */

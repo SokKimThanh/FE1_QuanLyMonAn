@@ -93,6 +93,10 @@ img.btnIcon {
     transition: .2s;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                        hang ngang cac items hinh nho                       */
+/* -------------------------------------------------------------------------- */
+/* khong the nhay xuong hang */
 .area-wrap {
     flex-wrap: nowrap;
     overflow: auto;
@@ -105,7 +109,7 @@ img.btnIcon {
 }
 
 .textwraps {
-    text-overflow: ;
+    text-overflow: auto;
     overflow: auto;
 }
 
