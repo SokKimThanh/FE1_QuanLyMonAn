@@ -28,13 +28,14 @@
                         <!-- **************************************************************** -->
                         <!--                           DROPZONE                               -->
                         <!-- **************************************************************** -->
-                        <input type="file" id="inputUpload">
+                        <input type="file" id="inputUpload" hidden>
                         <div id="dropzone" class="dropzone dropzone-flex" (dragover)="onDragOver($event)"
                             (drop)="onDrop($event)">
                             <!-- hidden input file -->
                             <!-- showing image choosen -->
-                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop" class="img-fluid"
-                                draggable="true" (dragstart)="onDragStart($event)">
+                            <img id="dragImage" src="../../assets/images/c-dragEvent.png" alt="dragAndDrop"
+                                class="img-fluid" draggable="true" (dragstart)="onDragStart($event)"
+                                (click)="clickImage()">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -79,10 +80,6 @@
                     <!-- TYPE 2: Sap xep theo gia -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-sort.png" alt="sort" (click)="sort(1)" />
-                    </button>
-                    <!-- nút play -->
-                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
-                        <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="sort" (click)="play()" />
                     </button>
                     <!-- nút thêm mới -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1" data-bs-toggle="modal"
@@ -142,7 +139,16 @@
                     <!--             dishes tồn tại thì mới lấy ra được để bấm play              -->
                     <!-- ----------------------------------------------------------------------- -->
                     <!-- Hinh gallery -->
+
                     <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
+                    <!-- nút play -->
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="play" (click)="play()" />
+                    </button>
+                    <!-- nut stop -->
+                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-stop.png" alt="stop" (click)="stop()" />
+                    </button>
                 </ng-container>
             </div>
         </div>

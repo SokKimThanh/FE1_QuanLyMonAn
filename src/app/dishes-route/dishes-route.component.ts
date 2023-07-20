@@ -59,6 +59,41 @@ export class DishesRouteComponent {
     let close_button = document.getElementById('close_button');
     close_button?.click();
   }
+  refreshChonHinh() {
+    //reset data;
+    // this.dishes = this.data.getMonAnList();
+    // khai bao
+    let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
+    let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
+    let hinhNhoHienTai = thumbnails[0];// hình nhỏ hiện tại mặc định
+
+    /**
+     * @param i vị trí hiện tại trong danh sách hình nhỏ
+     * @mota chọn hình bất kỳ tại vị trí hình nhỏ bất kỳ
+     */
+    for (let i = 0; i < thumbnails.length; i++) {
+      let hinhNhoDangChon = thumbnails[i];// hình được chọn tại vi trí thứ i
+      // sự kiện click hình nhỏ
+      hinhNhoDangChon.addEventListener("click", function () {
+        // bước chọn hình nhỏ hiện tại
+        /** 
+        * figure 0. Tô màu tự động
+        * */
+        // hiển thị hình lớn từ hình nhỏ đang chọn
+        mainPhoto!.setAttribute('src', hinhNhoDangChon.getAttribute('src')!);
+        // xóa viền mới của hình hiện tại
+        hinhNhoHienTai!.classList.remove('active');
+        // thay viền mới của hình kế tiếp
+        hinhNhoDangChon.classList.add('active');
+        // áp dụng hình hiện tại là hình kế tiếp được chọn
+        hinhNhoHienTai = hinhNhoDangChon;
+      });
+    }
+  }
+
+  stop() {
+    clearInterval(this.intervalID);
+  }
   /**
    * Hàm chạy tự động slideshow
    */
@@ -143,11 +178,17 @@ export class DishesRouteComponent {
       dragImage!.setAttribute('src', '/assets/no_preview.png');
     }
   }
+
   /* thêm hình vào khung hình */
-  onFileSelected() {
+  public onFileSelected() {
     // selector input upload
     let inputUpload = document.getElementById('inputUpload')!;
     this.readURL(inputUpload);
+  }
+  clickImage() {
+    // alert("clicked image");
+    let inputUpload = document.getElementById('inputUpload')!;
+    inputUpload.click();
   }
   /**
    * 
@@ -221,6 +262,7 @@ export class DishesRouteComponent {
       this.closeModal();
       //refresh danh sach hinh nho
       this.dishes = this.data.getMonAnList();
+      this.refreshChonHinh();
     }
   }
   /**
