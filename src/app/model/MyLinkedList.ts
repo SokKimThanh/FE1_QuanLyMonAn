@@ -101,7 +101,7 @@ export class MyLinkedList {
   public FindPreviousNode(node: MyNode): MyNode {
     let p = this.first;
     while (p != null) {
-      if (p.next == node) {
+      if (p.next.data.CompareToMaMonAn(node.data) == 0) {
         return p;
       }
       p = p.next!;
@@ -171,9 +171,9 @@ export class MyLinkedList {
    */
   public Remove(del: MyNode): boolean {
     let check: boolean = false;
-    if (del.data.CompareToMaMonAn(this.first.data)) {
+    if (del.data.CompareToMaMonAn(this.first.data) == 0) {
       this.RemoveFirst();
-    } else if (del.data.CompareToMaMonAn(this.last.data)) {
+    } else if (del.data.CompareToMaMonAn(this.last.data) == 0) {
       this.RemoveLast();
     } else {
       let beforeNode: MyNode = this.FindPreviousNode(del);

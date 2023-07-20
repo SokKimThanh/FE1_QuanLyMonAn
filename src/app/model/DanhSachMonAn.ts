@@ -224,7 +224,7 @@ export class DanhSachMonAnService {
      * 
      * @param idInputSelector Hàm bắt sự kiện thay đổi file khi add file hình
      */
-    clickChangeImageSelectorEvent(idInputSelector: string, idDragImage:string) {
+    clickChangeImageSelectorEvent(idInputSelector: string, idDragImage: string) {
         // selector input upload
         let inputUpload = document.getElementById(idInputSelector)! as HTMLInputElement;
         inputUpload.addEventListener('change', function () {
