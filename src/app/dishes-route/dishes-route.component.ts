@@ -35,13 +35,14 @@ export class DishesRouteComponent {
   intervalID: any;
 
   // @Output() galleryMonAnParrentGeneric = new EventEmitter<MonAn>;
-  monAnDetail: MonAn = new MonAn();
+  monAnDetail: MonAn = new MonAn('general', 'Trứng rán', 1000, 10, '../../assets/images/logo.svg');
+  // tim kiem thong tin
+  gallerySearch: string = "";
 
   /* ------------------------------- constructor ------------------------------ */
   constructor(private modalService: NgbModal, private data: DanhSachMonAnService) {
     data = new DanhSachMonAnService();
     this.dishes = data.getMonAnList();
-
   }
   /**
    * Khởi tạo mảng sau khi render hook angular
@@ -58,37 +59,6 @@ export class DishesRouteComponent {
   closeModal() {
     let close_button = document.getElementById('close_button');
     close_button?.click();
-  }
-  refreshChonHinh() {
-    //reset data;
-    // this.dishes = this.data.getMonAnList();
-    // khai bao
-    let thumbnails = document.querySelectorAll('.thumbnail');// danh sách hình nhỏ
-    let mainPhoto = document.querySelector('.main-photo');// hình lớn mặc định
-    let hinhNhoHienTai = thumbnails[0];// hình nhỏ hiện tại mặc định
-
-    /**
-     * @param i vị trí hiện tại trong danh sách hình nhỏ
-     * @mota chọn hình bất kỳ tại vị trí hình nhỏ bất kỳ
-     */
-    for (let i = 0; i < thumbnails.length; i++) {
-      let hinhNhoDangChon = thumbnails[i];// hình được chọn tại vi trí thứ i
-      // sự kiện click hình nhỏ
-      hinhNhoDangChon.addEventListener("click", function () {
-        // bước chọn hình nhỏ hiện tại
-        /** 
-        * figure 0. Tô màu tự động
-        * */
-        // hiển thị hình lớn từ hình nhỏ đang chọn
-        mainPhoto!.setAttribute('src', hinhNhoDangChon.getAttribute('src')!);
-        // xóa viền mới của hình hiện tại
-        hinhNhoHienTai!.classList.remove('active');
-        // thay viền mới của hình kế tiếp
-        hinhNhoDangChon.classList.add('active');
-        // áp dụng hình hiện tại là hình kế tiếp được chọn
-        hinhNhoHienTai = hinhNhoDangChon;
-      });
-    }
   }
 
   stop() {
@@ -192,14 +162,15 @@ export class DishesRouteComponent {
   }
   /**
    * 
-   * @param key Tu khoa tìm kiếm
+   * @param this.gallerySearch Tu khoa tìm kiếm
    * @returns danh sách tìm được
    */
-  searchGallery(key: string) {
-    if (key == "") {
+  searchGallery(gallerySearch: string) {
+
+    if (gallerySearch == "") {
       this.dishes = this.data.getMonAnList();
     } else {
-      this.dishes = this.data.search(key);
+      this.dishes = this.data.search(gallerySearch);
     }
   }
 
@@ -262,7 +233,6 @@ export class DishesRouteComponent {
       this.closeModal();
       //refresh danh sach hinh nho
       this.dishes = this.data.getMonAnList();
-      this.refreshChonHinh();
     }
   }
   /**

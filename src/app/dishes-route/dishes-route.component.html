@@ -53,10 +53,17 @@
         <div class="row">
             <div class="col-6 bg-warning">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-10">
                         <label class="form-label" for="gallery-search">Search Gallery</label>
-                        <input class="form-control" id="gallery-search" placeholder="Ex: monan001" #search>
+                        <!-- ----------------------------------------------------------------------- -->
+                        <!--                          two way data binding                           -->
+                        <!-- ----------------------------------------------------------------------- -->
+                        <!-- reference search -->
+                        <input class="form-control" id="gallery-search" placeholder="Ex: monan001" [(ngModel)]="gallerySearch" (change)="searchGallery(gallerySearch)">
                     </div>
+                    <!-- <button type="button" class="btn btn-primary col-sm-2" (click)="searchGallery(search.value)">
+                        <img class="img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" />
+                    </button> -->
                 </div>
             </div>
             <div class="col-6 bg-warning">
@@ -70,11 +77,7 @@
                     <!-- <img class="col-2 img-fluid btnIcon" src="./assets/images/c-read.png" alt="readfile"
                         (click)="readfile()" /> -->
                     <!-- Nút tìm kiếm-->
-                    <!-- reference search -->
-                    <button type="button" class="btn btn-primary col-4 col-sm-2 m-1"
-                        (click)="searchGallery(search.value)">
-                        <img class="img-fluid btnIcon" src="./assets/images/c-find.png" alt="find" />
-                    </button>
+
                     <!-- Nút sắp xếp -->
                     <!-- TYPE 1: Sap xep theo ma -->
                     <!-- TYPE 2: Sap xep theo gia -->
@@ -127,7 +130,7 @@
                 <!-- **************************************************************** -->
                 <!--      thông tin chi tiết món ăn sau khi bấm nút view              -->
                 <!-- **************************************************************** -->
-                <ng-container class="row" *ngIf="dishes">
+                <ng-container class="row" *ngIf="monAnDetail">
                     <!-- Thong tin mon an -->
                     <article class="area-relative" *ngIf="monAnDetail as item">
                         <p class="h2 text-bg-info p-4">{{item.tenMonAn | uppercase}}</p>
@@ -140,7 +143,8 @@
                     <!-- ----------------------------------------------------------------------- -->
                     <!-- Hinh gallery -->
 
-                    <img class="col-12 img-fluid main-photo" [src]="dishes[0].url_image" [alt]="dishes[0].tenMonAn" />
+                    <img class="col-12 img-fluid main-photo" [src]="monAnDetail.url_image"
+                        [alt]="monAnDetail.tenMonAn" />
                     <!-- nút play -->
                     <button type="button" class="btn btn-primary col-4 col-sm-2 m-1">
                         <img class="img-fluid btnIcon" src="./assets/images/c-play.png" alt="play" (click)="play()" />

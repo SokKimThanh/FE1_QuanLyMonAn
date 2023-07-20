@@ -5,7 +5,7 @@
 - Thêm chức năng refresh khi click vào hình va hinh hinh xong
 - Thêm nút dừng slideshow
 - ![Alt text](chucnang-refresh-chonhinh.png)
-- ![Alt text](chucnang-stop-slidesho.png)
+- ![Alt text](chucnang-start-stop-slideshow.png)
 
 ## Cập nhật 14/07/2023
 
