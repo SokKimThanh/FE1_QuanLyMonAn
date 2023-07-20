@@ -3,11 +3,11 @@
 ## Cập nhật 20/07/2023
 
 - cập nhật chức năng xóa giữa
-- ![Alt text](chucnang-xoagiua.png)
+- ![Alt text](./src/assets/images/chucnang-xoagiua.png)
 - Thêm chức năng refresh khi click vào hình va hinh hinh xong
 - Thêm nút dừng slideshow
-- ![Alt text](chucnang-refresh-chonhinh.png)
-- ![Alt text](chucnang-start-stop-slideshow.png)
+- ![Alt text](./src/assets/images/chucnang-refresh-chonhinh.png)
+- ![Alt text](./src/assets/images/chucnang-start-stop-slideshow.png)
 - xoa component housing list
 
 ## Cập nhật 14/07/2023
