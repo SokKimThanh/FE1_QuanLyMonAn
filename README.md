@@ -2,6 +2,8 @@
 
 ## Cập nhật 20/07/2023
 
+- cập nhật chức năng xóa giữa
+- ![Alt text](chucnang-xoagiua.png)
 - Thêm chức năng refresh khi click vào hình va hinh hinh xong
 - Thêm nút dừng slideshow
 - ![Alt text](chucnang-refresh-chonhinh.png)
